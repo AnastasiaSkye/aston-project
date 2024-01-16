@@ -1,4 +1,4 @@
-# aston-project
+# Plants Gallery
 
 [![CI/CD](https://github.com/AnastasiaSkye/aston-project/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/AnastasiaSkye/aston-project/actions/workflows/ci-cd.yml)
 
