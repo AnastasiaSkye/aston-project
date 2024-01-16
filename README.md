@@ -1,5 +1,8 @@
 # aston-project
 
+[![CI/CD](https://github.com/AnastasiaSkye/aston-project/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/AnastasiaSkye/aston-project/actions/workflows/ci-cd.yml)
+
+
 - Проект представляет собой энциклопедию растений
 - Использованное API: [Plant API](https://perenual.com/docs/api)
 
