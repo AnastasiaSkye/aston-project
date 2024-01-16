@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/compose-function": "^0.0.33",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "3.2.2"
   }
