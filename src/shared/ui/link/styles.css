@@ -1,0 +1,7 @@
+.link {
+    transition: text-decoration 500ms ease;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
