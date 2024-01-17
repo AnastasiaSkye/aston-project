@@ -25,14 +25,14 @@ export function Navigation() {
 				{isAuthorized ?
 					<>
 						{authNavigation.map(el =>
-							<li><Link href={el.href} text={el.text}/></li>
+							<li key={el.href}><Link href={el.href} text={el.text}/></li>
 						)}
 						<li><button onClick={logout}>Logout</button></li>
 					</>
 					:
 					<>
 						{publicNavigation.map(el =>
-							<li><Link href={el.href} text={el.text}/></li>
+							<li key={el.href}><Link href={el.href} text={el.text}/></li>
 						)}
 					</>
 				}
