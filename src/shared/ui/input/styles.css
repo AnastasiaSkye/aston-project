@@ -1,0 +1,12 @@
+.input {
+    padding: 10px 20px;
+    border: 1px solid;
+    border-radius: 2em;
+    background: var(--light-1);
+    transition: background;
+    width: 100%;
+}
+
+.input:hover {
+    background: var(--light-2);
+}

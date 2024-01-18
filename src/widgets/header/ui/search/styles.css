@@ -11,23 +11,6 @@
     width: 100%;
 }
 
-.header__search input {
-    align-items: center;
-    display: flex;
-    padding: 10px 20px;
-    justify-content: center;
-    max-width: 100%;
-    border: 1px solid;
-    border-radius: 2em;
-    background: var(--light-1);
-    transition: background;
-    width: 100%;
-}
-
-.header__search input:hover {
-    background: var(--light-2);
-}
-
 .header__search-icon {
     right: 0;
     margin-right: 20px;
