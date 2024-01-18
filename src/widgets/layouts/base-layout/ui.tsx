@@ -1,9 +1,9 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Header } from '../header/header';
+import { Header } from 'widgets/header';
 
-function Layout() {
+export function BaseLayout() {
 	return (
 		<>
 			<Header />
@@ -16,4 +16,3 @@ function Layout() {
 	);
 }
 
-export default Layout;

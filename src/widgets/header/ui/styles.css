@@ -1,0 +1,23 @@
+.header {
+    padding: 20px 0;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Row ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@media (max-width: 800px) {
+    .header__row {
+        flex-wrap: wrap;
+    }
+}
+
+.header__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 40px;
+    row-gap: 20px;
+    padding: 16px;
+    border: 1px solid;
+    border-radius: var(--border-radius);
+}
+

@@ -5,6 +5,7 @@
     --accent: #1074d2;
     --accent-1: #0863b9;
     --accent-2: #4672c5;
+    --accent-3: #6789cb;
     --border-radius: 7px;
 }
 
@@ -25,6 +26,11 @@ img {
     border: 1px solid;
     border-radius: var(--border-radius);
 }
+
+input::-webkit-input-placeholder {
+    color: var(--accent-3);
+}
+
 
 .container {
     max-width: 1780px;
