@@ -4,9 +4,15 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Row ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .header__row {
         flex-wrap: wrap;
+    }
+    .header__row > div:first-child, .header__row > nav {
+        flex: 1 1 33%;
+    }
+    .header__row > div:nth-child(2) {
+        order: 3;
     }
 }
 
