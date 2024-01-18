@@ -1,6 +1,6 @@
 import compose from 'compose-function';
 
-import { RouterProviders } from './router-providers';
-import { StoreProviders } from './store-providers';
+import { RouterProvider } from './router-provider';
+import { StoreProvider } from './store-provider';
 
-export const withProviders = compose(StoreProviders, RouterProviders);
+export const withProviders = compose(StoreProvider, RouterProvider);
