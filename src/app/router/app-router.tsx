@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { RouteDescription, RouteName } from 'shared/config';
 
-const Layout = lazy(() => import('widgets/layouts'));
+const BaseLayout = lazy(() => import('widgets/layouts'));
 const Main = lazy(() => import('pages/main'));
 const Registration = lazy(() => import('pages/registration'));
 const Login = lazy(() => import('pages/login'));
@@ -72,7 +72,7 @@ function ProtectedRoute({ children }: Props) {
 export function AppRouter() {
 	return (
 		<Routes>
-			<Route path='/' element={<Layout />}>
+			<Route path='/' element={<BaseLayout />}>
 				{publicRoutes.map(({ path, component: Component }) => (
 					<Route key={path} path={path} element={<Component />} />
 				))}
@@ -84,8 +84,8 @@ export function AppRouter() {
 							   </ProtectedRoute>
 						   } />
 				))}
+				<Route path={NOT_FOUND_PAGE} element={<NotFound />} />
 			</Route>
-			<Route path={NOT_FOUND_PAGE} element={<NotFound />} />
 		</Routes>
 	);
 }
