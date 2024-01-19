@@ -1,8 +1,8 @@
 .input {
-    padding: 10px 20px;
+    background: var(--light-1);
+    padding: 9px 20px;
     border: 1px solid;
     border-radius: 2em;
-    background: var(--light-1);
     transition: background;
     width: 100%;
 }

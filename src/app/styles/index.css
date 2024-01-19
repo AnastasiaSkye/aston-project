@@ -103,22 +103,3 @@ input::-webkit-input-placeholder {
     color: var(--light-0);
     background: var(--accent-2);
 }
-
-.btn-accent-1 {
-    background: var(--accent-1);
-    color: var(--light-0);
-    border: 1px solid var(--accent-1);
-    border-radius: 2rem;
-    margin: auto;
-    padding: 10px 20px;
-    transition: color .5s ease, background .5s ease;
-}
-
-.btn-accent-1:hover {
-    background: var(--accent-2);
-}
-
-.btn-accent-1:focus {
-    color: var(--accent-1);
-    background: var(--light-2);
-}

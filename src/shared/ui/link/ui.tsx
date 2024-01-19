@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -17,4 +17,4 @@ LinkMemo.propTypes = {
 	href: PropTypes.string.isRequired,
 };
 
-export const Link = React.memo(LinkMemo)
+export const Link = memo(LinkMemo)
