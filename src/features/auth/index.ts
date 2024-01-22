@@ -1,1 +1,2 @@
-export { Logout } from './logout'
+export { Logout } from './logout';
+export { AuthForm } from './auth';

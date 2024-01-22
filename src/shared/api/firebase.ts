@@ -1,9 +1,30 @@
-import { getFirestore } from 'firebase/firestore';
+import {
+	createUserWithEmailAndPassword,
+	getAuth,
+	signInWithEmailAndPassword,
+	signOut,
+	User,
+	UserCredential
+} from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
 
 import { FirebaseConfig } from 'shared/config';
 
 const app = initializeApp(FirebaseConfig);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+const auth = getAuth(app);
+
+export const firebaseApi = {
+	async signUp(email: string, password: string): Promise<UserCredential> {
+		return await createUserWithEmailAndPassword(auth, email, password);
+	},
+	async signIn(email: string, password: string): Promise<UserCredential> {
+		return await signInWithEmailAndPassword(auth, email, password);
+	},
+	async signOut(): Promise<void> {
+		await signOut(auth);
+	},
+	async refresh(): Promise<User | null | undefined> {
+		await auth.authStateReady();
+		return auth.currentUser;
+	}
+};

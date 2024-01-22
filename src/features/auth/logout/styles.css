@@ -1,0 +1,7 @@
+.logout__button {
+    transition: text-decoration 500ms ease;
+}
+
+.logout__button:hover {
+    text-decoration: underline;
+}

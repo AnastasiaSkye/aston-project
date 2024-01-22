@@ -1,1 +1,2 @@
-export {auth, db} from './firebase'
+export { firebaseApi } from './firebase';
+export { LSApi } from './local-storage';

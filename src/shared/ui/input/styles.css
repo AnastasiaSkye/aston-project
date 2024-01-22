@@ -1,3 +1,13 @@
+.input__div {
+    width: 100%;
+}
+
+.label {
+    color: var(--accent-3);
+    min-height: 22px;
+    margin: 5px 0 2px 20px;
+}
+
 .input {
     background: var(--light-1);
     padding: 9px 20px;
@@ -7,6 +17,19 @@
     width: 100%;
 }
 
-.input:hover {
+.input:hover, .input:focus {
     background: var(--light-2);
+}
+
+.error {
+    font-size: 14px;
+    color: var(--accent-1);
+    min-height: 23px;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.error span {
+    margin-left: 4px;
 }

@@ -1,7 +1,9 @@
-import React, { lazy } from 'react';
+import React, { lazy, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { RouteDescription, RouteName } from 'shared/config';
+import { useAuth } from 'entities/user';
+import { AuthStatus, RouteDescription, RouteName } from 'shared/config';
+import { Loader } from 'shared/ui';
 
 const BaseLayout = lazy(() => import('widgets/layouts'));
 const Main = lazy(() => import('pages/main'));
@@ -63,29 +65,42 @@ interface Props {
 }
 
 function ProtectedRoute({ children }: Props) {
-	// TODO: заменить когда будет реализована авторизация
-	const isAuthorized = true;
-
-	return isAuthorized ? <>{children}</> : <Navigate to={REGISTRATION_PAGE} replace />;
+	const { authStatus } = useAuth();
+	return authStatus === AuthStatus.SignedIn ?
+		<>{children}</>
+		:
+		<Navigate to={REGISTRATION_PAGE} replace />;
 }
 
 export function AppRouter() {
+	const { authChecked, authStatus } = useAuth();
+
+	useEffect(() => {
+		void authChecked();
+	}, []);
+
 	return (
-		<Routes>
-			<Route path='/' element={<BaseLayout />}>
-				{publicRoutes.map(({ path, component: Component }) => (
-					<Route key={path} path={path} element={<Component />} />
-				))}
-				{authRoutes.map(({ path, component: Component }) => (
-					<Route key={path} path={path}
-						   element={
-							   <ProtectedRoute>
-								   <Component />
-							   </ProtectedRoute>
-						   } />
-				))}
-				<Route path={NOT_FOUND_PAGE} element={<NotFound />} />
-			</Route>
-		</Routes>
+		<>
+			{authStatus === AuthStatus.Loading ?
+				<Loader />
+				:
+				<Routes>
+					<Route path='/' element={<BaseLayout />}>
+						{publicRoutes.map(({ path, component: Component }) => (
+							<Route key={path} path={path} element={<Component />} />
+						))}
+						{authRoutes.map(({ path, component: Component }) => (
+							<Route key={path} path={path}
+								   element={
+									   <ProtectedRoute>
+										   <Component />
+									   </ProtectedRoute>
+								   } />
+						))}
+						<Route path={NOT_FOUND_PAGE} element={<NotFound />} />
+					</Route>
+				</Routes>
+			}
+		</>
 	);
 }
