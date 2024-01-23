@@ -14,7 +14,7 @@
     background: var(--accent-2);
 }
 
-.btn-accent-1:focus {
-    color: var(--accent-1);
-    background: var(--light-2);
+.loading {
+    color: var(--accent-1)!important;
+    background: var(--light-2)!important;
 }

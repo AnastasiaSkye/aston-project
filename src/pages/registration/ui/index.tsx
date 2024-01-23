@@ -1,7 +1,8 @@
 import React from 'react';
+import { AuthCard } from 'widgets/auth-card';
 
 export function Registration() {
 	return (
-		<div>Registration</div>
+		<AuthCard isLogin={false}/>
 	);
 }

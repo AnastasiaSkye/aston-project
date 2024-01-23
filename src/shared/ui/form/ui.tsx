@@ -11,7 +11,6 @@ interface Props extends FormHTMLAttributes<HTMLFormElement> {
 export function FormMemo({ children, className, ...props }: Props) {
 	return (
 		<form {...props}
-
 			  className={'form ' + className}>
 			{children}
 		</form>
@@ -20,7 +19,8 @@ export function FormMemo({ children, className, ...props }: Props) {
 
 FormMemo.propTypes = {
 	children: PropTypes.node.isRequired,
-	className: PropTypes.string
+	className: PropTypes.string,
+	onSubmit:  PropTypes.func,
 };
 
 export const Form = memo(FormMemo);

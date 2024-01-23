@@ -20,7 +20,8 @@ export function ButtonMemo({ children, className, ...props }: Props) {
 ButtonMemo.propTypes = {
 	children: PropTypes.node.isRequired,
 	className: PropTypes.string,
-	onClick: PropTypes.func.isRequired
+	onClick: PropTypes.func,
+	type: PropTypes.string
 };
 
 export const Button = memo(ButtonMemo);
