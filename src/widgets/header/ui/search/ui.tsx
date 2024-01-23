@@ -9,7 +9,6 @@ import type { FormEvent } from 'react';
 
 import './styles.css';
 
-
 export function Search() {
 	const [value, setValue] = useState('');
 	const [isOpen, setIsOpen] = useState(true);
@@ -22,6 +21,7 @@ export function Search() {
 		navigate(RouteName.SEARCH_PAGE + '?query=' + value)
 	}
 
+	// TODO: переместить form на features/search
 	return (
 		<div className='header__search'>
 			<form onSubmit={handleSubmit}>
