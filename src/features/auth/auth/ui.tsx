@@ -12,10 +12,10 @@ interface Props {
 export function AuthForm({ isLogin }: Props) {
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
-	const [emailLabel, setEmailLabel] = useState<string | undefined>(undefined);
-	const [passwordLabel, setPasswordLabel] = useState<string | undefined>(undefined);
-	const [emailError, setEmailError] = useState<string | undefined>(undefined);
-	const [passwordError, setPasswordError] = useState<string | undefined>(undefined);
+	const [emailLabel, setEmailLabel] = useState<string>('');
+	const [passwordLabel, setPasswordLabel] = useState<string>('');
+	const [emailError, setEmailError] = useState<string>('');
+	const [passwordError, setPasswordError] = useState<string>('');
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const navigate = useNavigate();
 	const user = useAuth();
@@ -38,24 +38,24 @@ export function AuthForm({ isLogin }: Props) {
 	const handleChange = (type: string, value: string) => {
 		if (type === 'Email') {
 			setEmail(value);
-			value === '' ? setEmailLabel(undefined) : setEmailLabel(type);
+			value === '' ? setEmailLabel('') : setEmailLabel(type);
 		} else if (type === 'Password') {
 			setPassword(value);
-			value === '' ? setPasswordLabel(undefined) : setPasswordLabel(type);
+			value === '' ? setPasswordLabel('') : setPasswordLabel(type);
 		}
 	};
 
 	const handleError = (type: string) => {
 		if (type === 'Email' || type === 'All') {
 			if (email.toLowerCase().match(emailRegular)) {
-				setEmailError(undefined);
+				setEmailError('');
 			} else {
 				setEmailError('Please enter a valid e-mail');
 			}
 		}
 		if (type === 'Password' || type === 'All') {
 			if (password.length >= 8) {
-				setPasswordError(undefined);
+				setPasswordError('');
 			} else {
 				setPasswordError('Passwords must have 8 characters or more');
 			}

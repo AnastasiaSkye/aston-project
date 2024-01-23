@@ -77,7 +77,7 @@ export function AppRouter() {
 
 	useEffect(() => {
 		void authChecked();
-	}, []);
+	}, [authChecked]);
 
 	return (
 		<>
