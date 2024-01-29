@@ -21,7 +21,7 @@ export function AuthForm({ isLogin }: Props) {
 	const navigate = useNavigate();
 	const user = useAuth();
 
-	const handleErrorEmail = useCallback(() : void => {
+	const handleErrorEmail = useCallback((): void => {
 		if (email.toLowerCase().match(emailRegular)) {
 			setEmailError('');
 		} else {
@@ -29,7 +29,7 @@ export function AuthForm({ isLogin }: Props) {
 		}
 	}, [email]);
 
-	const handleErrorPassword = useCallback(() : void => {
+	const handleErrorPassword = useCallback((): void => {
 		if (password.length >= 8) {
 			setPasswordError('');
 		} else {
@@ -38,17 +38,17 @@ export function AuthForm({ isLogin }: Props) {
 	}, [password.length]);
 
 
-	const handleChangeEmail = useCallback((value: string) : void => {
+	const handleChangeEmail = useCallback((value: string): void => {
 		setEmail(value);
 		value === '' ? setEmailLabel('') : setEmailLabel('Email');
 	}, []);
 
-	const handleChangePassword = useCallback((value: string) : void => {
+	const handleChangePassword = useCallback((value: string): void => {
 		setPassword(value);
 		value === '' ? setPasswordLabel('') : setPasswordLabel('Password');
 	}, []);
 
-	const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) : Promise<void> => {
+	const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>): Promise<void> => {
 		try {
 			e.preventDefault();
 			handleErrorEmail();

@@ -36,9 +36,10 @@
     .card-list__section {
         gap: 10px !important;
     }
+
     .card-list__section > div {
-        flex: 1 1 100%!important;
-        max-width: 100%!important;
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
     }
 }
 
@@ -46,6 +47,7 @@
     .card-list__section {
         gap: 10px !important;
     }
+
     .card-list__section > div {
         flex: 1 1 33% !important;
         max-width: calc((100% - 10px) / 2) !important;

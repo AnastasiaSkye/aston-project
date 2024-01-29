@@ -2,9 +2,11 @@
     .plant {
         display: block !important;
     }
+
     .plant > div:first-child {
         width: 100% !important;
     }
+
     .plant h1 {
         margin-top: 15px;
     }

@@ -17,7 +17,7 @@ export function SearchForm() {
 	const debouncedQuery = useDebounce(query, 500);
 	const navigate = useNavigate();
 
-	const handleChange = useCallback((query: string) : void => {
+	const handleChange = useCallback((query: string): void => {
 		if (query && query.length >= 2) {
 			setQuery(query);
 		} else {
@@ -25,15 +25,15 @@ export function SearchForm() {
 		}
 	}, []);
 
-	const handleFocus = useCallback(() : void => {
+	const handleFocus = useCallback((): void => {
 		setIsOpen(true);
 	}, []);
 
-	const handleBlur = useCallback(() : void => {
+	const handleBlur = useCallback((): void => {
 		setTimeout(() => setIsOpen(false), 300);
 	}, []);
 
-	const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) : void => {
+	const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>): void => {
 		e.preventDefault();
 		if (query.length !== 0) {
 			setIsOpen(false);
