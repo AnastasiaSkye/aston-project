@@ -1,7 +1,11 @@
+import { memo } from 'react';
+
 import './styles.css';
 
-export function Loader() {
+export function LoaderMemo() {
 	return (
-		<div className='loader'/>
+		<div className='loader' />
 	);
 }
+
+export const Loader = memo(LoaderMemo);

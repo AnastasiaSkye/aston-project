@@ -23,13 +23,14 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-img {
-    border: 1px solid;
-    border-radius: var(--border-radius);
-}
-
 input::-webkit-input-placeholder {
     color: var(--accent-3);
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 0 15px !important;
+    }
 }
 
 

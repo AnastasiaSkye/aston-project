@@ -1,1 +1,1 @@
-export {AuthCard} from './ui'
+export { AuthCard } from './ui';

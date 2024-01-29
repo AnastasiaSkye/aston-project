@@ -1,0 +1,27 @@
+.plant-img {
+    background: var(--light-1);
+    aspect-ratio: 1;
+    border: 1px solid;
+    border-radius: var(--border-radius);
+}
+
+.height-50px {
+    height: 50px;
+}
+
+.plant-filter {
+    position: relative;
+    border-radius: var(--border-radius);
+}
+
+.plant-filter:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--accent);
+    border-radius: var(--border-radius);
+    opacity: 0.5;
+}

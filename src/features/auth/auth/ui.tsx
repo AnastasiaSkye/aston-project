@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from 'entities/user';
@@ -14,63 +14,73 @@ export function AuthForm({ isLogin }: Props) {
 	const [password, setPassword] = useState<string>('');
 	const [emailLabel, setEmailLabel] = useState<string>('');
 	const [passwordLabel, setPasswordLabel] = useState<string>('');
+	const [formError, setFormError] = useState<string>('');
 	const [emailError, setEmailError] = useState<string>('');
 	const [passwordError, setPasswordError] = useState<string>('');
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const navigate = useNavigate();
 	const user = useAuth();
 
-	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		if (!handleError('All')) {
-			setIsLoading(true);
+	const handleErrorEmail = useCallback(() : void => {
+		if (email.toLowerCase().match(emailRegular)) {
+			setEmailError('');
+		} else {
+			setEmailError('Please enter a valid e-mail');
+		}
+	}, [email]);
 
-			if (isLogin) {
-				await user.signIn(email, password);
-				navigate(RouteName.MAIN_PAGE);
+	const handleErrorPassword = useCallback(() : void => {
+		if (password.length >= 8) {
+			setPasswordError('');
+		} else {
+			setPasswordError('Passwords must have 8 characters or more');
+		}
+	}, [password.length]);
+
+
+	const handleChangeEmail = useCallback((value: string) : void => {
+		setEmail(value);
+		value === '' ? setEmailLabel('') : setEmailLabel('Email');
+	}, []);
+
+	const handleChangePassword = useCallback((value: string) : void => {
+		setPassword(value);
+		value === '' ? setPasswordLabel('') : setPasswordLabel('Password');
+	}, []);
+
+	const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) : Promise<void> => {
+		try {
+			e.preventDefault();
+			handleErrorEmail();
+			handleErrorPassword();
+			if (email.toLowerCase().match(emailRegular) && password.length >= 8) {
+				setIsLoading(true);
+				if (isLogin) {
+					await user.signIn(email, password);
+					navigate(RouteName.MAIN_PAGE);
+				} else {
+					await user.signUp(email, password);
+					navigate(RouteName.LOGIN_PAGE);
+				}
+			}
+		} catch (error) {
+			setIsLoading(false);
+			if (error instanceof Error) {
+				setFormError(error.message);
 			} else {
-				await user.signUp(email, password);
-				navigate(RouteName.LOGIN_PAGE);
+				setFormError('unknown_error');
 			}
 		}
-	};
-
-	const handleChange = (type: string, value: string) => {
-		if (type === 'Email') {
-			setEmail(value);
-			value === '' ? setEmailLabel('') : setEmailLabel(type);
-		} else if (type === 'Password') {
-			setPassword(value);
-			value === '' ? setPasswordLabel('') : setPasswordLabel(type);
-		}
-	};
-
-	const handleError = (type: string) => {
-		if (type === 'Email' || type === 'All') {
-			if (email.toLowerCase().match(emailRegular)) {
-				setEmailError('');
-			} else {
-				setEmailError('Please enter a valid e-mail');
-			}
-		}
-		if (type === 'Password' || type === 'All') {
-			if (password.length >= 8) {
-				setPasswordError('');
-			} else {
-				setPasswordError('Passwords must have 8 characters or more');
-			}
-		}
-		return !(email.toLowerCase().match(emailRegular) && password.length >= 8);
-	};
+	}, [user, email, password, isLogin, handleErrorEmail, handleErrorPassword, navigate]);
 
 	return (
-		<Form onSubmit={handleSubmit}>
+		<Form onSubmit={handleSubmit} className='auth-form' error={formError}>
 			<Input placeholder='Email' type='email' label={emailLabel}
-				   onChange={(e) => handleChange('Email', e.target.value)}
-				   onBlur={() => handleError('Email')} error={emailError} />
+				   handleChange={handleChangeEmail}
+				   onBlur={handleErrorEmail} error={emailError} />
 			<Input placeholder='Password' type='password' label={passwordLabel}
-				   onChange={(e) => handleChange('Password', e.target.value)}
-				   onBlur={() => handleError('Password')} error={passwordError} />
+				   handleChange={handleChangePassword}
+				   onBlur={handleErrorPassword} error={passwordError} />
 			<Button className={`${isLoading && 'loading'}`} type='submit'>
 				{isLoading ? 'Loading...' : (isLogin ? 'Sign in' : 'Sign up')}
 			</Button>

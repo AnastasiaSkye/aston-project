@@ -1,0 +1,39 @@
+@media screen and (max-width: 600px) {
+    .plant-card__div {
+        height: calc(100% - 10px - (100vw - 30px - 10px)) !important;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 800px) {
+    .plant-card__div {
+        height: calc(100% - 10px - (100vw - 64px - 10px) / 2) !important;
+    }
+}
+
+.plant-card__div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 15px;
+    border: 1px solid;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    height: calc(100% - 15px - (100vw - 64px - 56px) / 3);
+}
+
+.plant-card__div h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.plant-card__info {
+    display: flex;
+    column-gap: 10px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.plant-card__info > div {
+    display: grid;
+    gap: 8px;
+}

@@ -4,17 +4,22 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-function LinkMemo({ ...props }) {
+interface Props {
+	text: string;
+	href: string;
+}
+
+function LinkMemo({ text, href }: Props) {
 	return (
-		<NavLink to={props.href} className='link'>
-			{props.text}
+		<NavLink to={href} className='link'>
+			{text}
 		</NavLink>
 	);
 }
 
 LinkMemo.propTypes = {
 	text: PropTypes.string.isRequired,
-	href: PropTypes.string.isRequired,
+	href: PropTypes.string.isRequired
 };
 
-export const Link = memo(LinkMemo)
+export const Link = memo(LinkMemo);

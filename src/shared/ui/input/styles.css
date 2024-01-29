@@ -2,7 +2,7 @@
     width: 100%;
 }
 
-.label {
+.input__label {
     color: var(--accent-3);
     min-height: 22px;
     margin: 5px 0 2px 20px;
@@ -21,7 +21,7 @@
     background: var(--light-2);
 }
 
-.error {
+.input__error {
     font-size: 14px;
     color: var(--accent-1);
     min-height: 23px;
