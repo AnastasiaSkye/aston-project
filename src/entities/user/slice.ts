@@ -36,6 +36,6 @@ const userSlice = createSlice({
 
 const { userSignedUp, userSignedIn, userSignedOut } = userSlice.actions;
 
-export const slice = { userSignedUp, userSignedIn, userSignedOut }
+export const slice = { userSignedUp, userSignedIn, userSignedOut };
 
 export const userReducer = userSlice.reducer;

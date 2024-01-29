@@ -4,6 +4,6 @@ import { AuthCard } from 'widgets/auth-card';
 
 export function Login() {
 	return (
-		<AuthCard isLogin={true}/>
+		<AuthCard isLogin={true} />
 	);
 }

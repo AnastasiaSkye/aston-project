@@ -1,0 +1,1 @@
+export { PlantImage } from './ui';

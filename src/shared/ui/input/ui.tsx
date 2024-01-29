@@ -8,19 +8,21 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
 	className?: string;
 	error?: string;
+	handleChange?: (value: string) => void;
 }
 
-export function InputMemo({ label, type = 'text', className, error, ...props }: Props) {
+export function InputMemo({ label, type = 'text', handleChange, className, error, ...props }: Props) {
 	return (
 		<div className='input__div'>
-			{type !== 'text' && <div className='label'>{label}</div>}
+			{type !== 'text' && <div className='input__label'>{label}</div>}
 			<input {...props}
+				   onChange={e => handleChange && handleChange(e.target.value)}
 				   className={'input ' + className}
 				   type={type}
 			/>
 			{error &&
-				<div className='error'>
-					<RiErrorWarningFill size={16}/>
+				<div className='input__error'>
+					<RiErrorWarningFill size={16} />
 					<span>{error}</span>
 				</div>
 			}
@@ -33,7 +35,7 @@ InputMemo.propTypes = {
 	type: PropTypes.string,
 	className: PropTypes.string,
 	placeholder: PropTypes.string,
-	onChange: PropTypes.func,
+	handleChange: PropTypes.func,
 	onClick: PropTypes.func,
 	onBlur: PropTypes.func,
 	error: PropTypes.string

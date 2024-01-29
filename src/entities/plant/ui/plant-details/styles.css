@@ -1,0 +1,47 @@
+@media screen and (max-width: 800px) {
+    .plant {
+        display: block !important;
+    }
+    .plant > div:first-child {
+        width: 100% !important;
+    }
+    .plant h1 {
+        margin-top: 15px;
+    }
+}
+
+.plant {
+    margin-top: 8px;
+    margin-bottom: 28px;
+    display: flex;
+    column-gap: 20px;
+}
+
+.plant > div:first-child {
+    flex: 0 0 auto;
+    width: 40%;
+}
+
+.plant > div:last-child {
+    flex: 1 0 0;
+}
+
+.plant h1 {
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.plant__description {
+    margin-bottom: 15px;
+}
+
+.plant__info-card {
+    background: var(--light-1);
+    color: var(--accent-1);
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    border: 1px solid;
+    border-radius: var(--border-radius);
+}

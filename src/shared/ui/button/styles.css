@@ -15,6 +15,6 @@
 }
 
 .loading {
-    color: var(--accent-1)!important;
-    background: var(--light-2)!important;
+    color: var(--accent-1) !important;
+    background: var(--light-2) !important;
 }

@@ -1,0 +1,28 @@
+.suggestions-list {
+    background: var(--light-0);
+    border: 1px solid;
+    border-radius: var(--border-radius);
+    margin-top: 50px;
+    max-height: 255px;
+    overflow: auto;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    white-space: normal;
+    width: 100%;
+    z-index: 1000;
+}
+
+.suggestions-list li:nth-child(n+2) {
+    padding-top: 10px;
+}
+
+.suggestions-list a {
+    display: flex;
+    column-gap: 10px;
+}
+
+.suggestions-list__text {
+    display: flex;
+    align-items: center;
+}

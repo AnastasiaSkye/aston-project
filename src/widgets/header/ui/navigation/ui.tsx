@@ -24,7 +24,7 @@ export function Navigation() {
 				{authStatus === AuthStatus.SignedOut &&
 					<>
 						{publicNavigation.map(el =>
-							<li key={el.href}><Link href={el.href} text={el.text}/></li>
+							<li key={el.href}><Link href={el.href} text={el.text} /></li>
 						)}
 					</>
 				}

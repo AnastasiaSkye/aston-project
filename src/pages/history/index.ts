@@ -1,1 +1,1 @@
-export { History as default  } from './ui';
+export { History as default } from './ui';

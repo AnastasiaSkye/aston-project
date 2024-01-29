@@ -1,0 +1,70 @@
+.card-list__div {
+    text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+    .card-list__div h1 {
+        font-size: 45px !important;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 500px) {
+    .card-list__div h1 {
+        font-size: 50px !important;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 600px) {
+    .card-list__div h1 {
+        font-size: 60px !important;
+    }
+}
+
+.card-list__div h1 {
+    font-size: 80px;
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+
+.card-list__div div {
+    width: 320px;
+    font-size: 17px;
+    margin: 0 auto 40px;
+}
+
+@media screen and (max-width: 600px) {
+    .card-list__section {
+        gap: 10px !important;
+    }
+    .card-list__section > div {
+        flex: 1 1 100%!important;
+        max-width: 100%!important;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    .card-list__section {
+        gap: 10px !important;
+    }
+    .card-list__section > div {
+        flex: 1 1 33% !important;
+        max-width: calc((100% - 10px) / 2) !important;
+    }
+}
+
+.card-list__section {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.card-list__section > div {
+    flex: 1 1 25%;
+    max-width: calc((100% - 56px) / 3);
+}
+
+.card-list h2 {
+    text-align: center;
+    font-size: 30px;
+}

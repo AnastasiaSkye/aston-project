@@ -10,7 +10,7 @@ const Main = lazy(() => import('pages/main'));
 const Registration = lazy(() => import('pages/registration'));
 const Login = lazy(() => import('pages/login'));
 const Search = lazy(() => import('pages/search'));
-const Card = lazy(() => import('pages/card'));
+const Plant = lazy(() => import('pages/plant'));
 const NotFound = lazy(() => import('pages/not-found'));
 const Favorites = lazy(() => import('../../pages/favorites'));
 const History = lazy(() => import('../../pages/history'));
@@ -20,7 +20,7 @@ const {
 	REGISTRATION_PAGE,
 	LOGIN_PAGE,
 	SEARCH_PAGE,
-	CARD_PAGE,
+	PlANT_PAGE,
 	NOT_FOUND_PAGE,
 	FAVORITES_PAGE,
 	HISTORY_PAGE
@@ -44,8 +44,8 @@ const publicRoutes: RouteDescription[] = [
 		component: Search
 	},
 	{
-		path: CARD_PAGE + '/:id',
-		component: Card
+		path: PlANT_PAGE + '/:id',
+		component: Plant
 	}
 ];
 

@@ -5,7 +5,7 @@ export const RouteName = {
 	REGISTRATION_PAGE: '/signup',
 	LOGIN_PAGE: '/signin',
 	SEARCH_PAGE: '/search',
-	CARD_PAGE: '/card',
+	PlANT_PAGE: '/plant',
 	FAVORITES_PAGE: '/favorites',
 	HISTORY_PAGE: '/history',
 	NOT_FOUND_PAGE: '*'

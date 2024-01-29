@@ -1,8 +1,22 @@
-.form {
+.auth-form {
     display: flex;
     flex-direction: column;
 }
 
-.form button {
+.auth-form button {
     margin-top: 25px;
+}
+
+.form__error {
+    font-size: 14px;
+    color: var(--accent-1);
+    min-height: 23px;
+    margin-top: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__error span {
+    margin-left: 4px;
 }

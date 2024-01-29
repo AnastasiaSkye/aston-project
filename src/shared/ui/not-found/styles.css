@@ -1,0 +1,32 @@
+.not-found {
+    margin-top: 8px;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .not-found img {
+        width: 100% !important;
+    }
+}
+
+.not-found img {
+    display: block;
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin: 0 auto 30px;
+    width: 350px;
+}
+
+.not-found h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.not-found > div {
+    margin-bottom: 5px;
+}
+
+.not-found > a {
+    text-decoration: underline !important;
+}
