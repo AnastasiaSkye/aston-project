@@ -5,4 +5,4 @@ export * from './button';
 export * from './form';
 export * from './image';
 export * from './fallback';
-export * from './not-found';
+export * from './status-message';

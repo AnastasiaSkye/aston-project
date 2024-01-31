@@ -8,9 +8,9 @@ interface Props {
 	children?: React.ReactNode;
 }
 
-export function NotFoundMemo({ isNotFound, isMissing, children }: Props) {
+export function StatusMessageMemo({ isNotFound, isMissing, children }: Props) {
 	return (
-		<div className='not-found'>
+		<section className='status-message'>
 			<img src='https://mega-orel.ru/img/2.gif' alt='Gif' />
 			<h1>Oops! Something went wrong :(</h1>
 			<div>
@@ -19,8 +19,8 @@ export function NotFoundMemo({ isNotFound, isMissing, children }: Props) {
 				{children && <div>Maybe the links below can be helpful</div>}
 			</div>
 			{children}
-		</div>
+		</section>
 	);
 }
 
-export const NotFound = memo(NotFoundMemo);
+export const StatusMessage = memo(StatusMessageMemo);
