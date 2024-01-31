@@ -20,3 +20,8 @@
     color: var(--accent-3);
     margin-right: 5px;
 }
+
+.dark .auth-card__div > span {
+    color: var(--light-3);
+    margin-right: 5px;
+}

@@ -30,7 +30,7 @@
 - [x] Есть разделение на умные и глупые компоненты: [Умный](src/features/search/ui/ui.tsx), [Глупый](src/shared/ui/image/ui.tsx)
 - [x] Есть рендеринг списков: [CardList](src/widgets/card-list/ui.tsx)
 - [x] Реализована хотя бы одна форма: [AuthForm](src/features/auth/auth/ui.tsx)
-- [ ] Есть применение Контекст API: 
+- [x] Есть применение Контекст API: [ThemeContext](src/app/contexts/theme-context.ts), [ThemeProvider](src/app/providers/theme-provider.tsx)
 - [x] Есть применение предохранителя: [ErrorBoundary](src/pages/main/ui/index.tsx)
 - [x] Есть хотя бы один кастомный хук: [useAuth](src/entities/user/use-auth.ts)
 - [x] Хотя бы несколько компонентов используют PropTypes: [Link](src/shared/ui/link/ui.tsx), [Button](src/shared/ui/button/ui.tsx), [Form](src/shared/ui/form/ui.tsx)
@@ -41,7 +41,7 @@
 
 - [x] Используем Modern Redux with Redux Toolkit: [store](src/app/store/store.ts)
 - [x] Используем слайсы: [userSlice](src/entities/user/slice.ts)
-- [x] Есть хотя бы одна кастомная мидлвара или `createListenerMiddleware`: 
+- [x] Есть хотя бы одна кастомная мидлвара или `createListenerMiddleware`: [signedInMiddleware](src/app/store/middleware.ts)
 - [x] Используется RTK Query: [plantApi](src/shared/api/plants.ts)
 - [x] Используется Transforming Responses: [plantApi](src/shared/api/plants.ts), [transformPlants](src/shared/lib/transform-plants.ts), [transformPlantDetails](src/shared/lib/transform-plants.ts)
 
@@ -52,4 +52,4 @@
 - [x] Используется TypeScript
 - [x] Использвуется Firebase: [firebaseApi](src/shared/api/firebase.ts)
 - [x] настроен CI/CD
-- [x] Связь UI и бизнес-логики построена не через команды, а через события: [Logout](src/features/auth/logout/ui.tsx) [useAuth](src/entities/user/use-auth.ts)
+- [x] Связь UI и бизнес-логики построена не через команды, а через события: [Logout](src/features/auth/logout/ui.tsx), [useAuth](src/entities/user/use-auth.ts)

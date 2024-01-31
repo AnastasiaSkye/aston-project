@@ -24,6 +24,14 @@
     animation-direction: alternate-reverse;
 }
 
+.dark.loader::before {
+    border: 4px double var(--light-1);
+}
+
+.dark .loader::after {
+    border-color: var(--light-3);
+}
+
 @keyframes rotationBreak {
     0% {
         transform: rotate(0);
