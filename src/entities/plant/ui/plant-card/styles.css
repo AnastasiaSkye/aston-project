@@ -4,7 +4,7 @@
     }
 }
 
-@media screen and (min-width: 600px) and (max-width: 800px) {
+@media screen and (min-width: 600px) and (max-width: 900px) {
     .plant-card__div {
         height: calc(100% - 10px - (100vw - 64px - 10px) / 2) !important;
     }

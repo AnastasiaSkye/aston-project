@@ -7,3 +7,5 @@ export { emailRegular } from './email';
 export type {
 	PlantsResponse, PlantResponse, PlantType, PlantDetailsResponse, PlantDetailsType, Hardiness
 } from './plants';
+export { Theme } from './theme';
+export { toastOptionsLight, toastOptionsDark } from './toast';

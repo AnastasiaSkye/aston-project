@@ -25,11 +25,29 @@
     font-size: 14px;
     color: var(--accent-1);
     min-height: 23px;
+    margin-left: 2px;
     margin-top: 2px;
     display: flex;
     align-items: center;
+    gap: 4px;
 }
 
-.error span {
-    margin-left: 4px;
+.input__error svg {
+    min-width: 16px;
+}
+
+.dark .input__label {
+    color: var(--light-3);
+}
+
+.dark .input {
+    background: var(--dark-1);
+}
+
+.dark .input:hover, .dark .input:focus {
+    background: var(--dark-2);
+}
+
+.dark .input__error {
+    color: var(--light-1);
 }

@@ -15,8 +15,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 4px;
 }
 
-.form__error span {
-    margin-left: 4px;
+.form__error svg {
+    min-width: 16px;
+}
+
+.dark .form__error {
+    color: var(--light-1);
 }

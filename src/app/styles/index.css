@@ -2,7 +2,11 @@
     --light-0: #fbfbff;
     --light-1: #eff6ff;
     --light-2: #daedff;
-    --light-3: #b4d9ff;
+    --light-3: #d3edff;
+    --dark-0: #031628;
+    --dark-1: #0a1e38;
+    --dark-2: #0c223f;
+    --dark-3: #6f7c98;
     --accent: #1074d2;
     --accent-1: #0863b9;
     --accent-2: #4672c5;
@@ -18,6 +22,11 @@ body {
     background: var(--light-0);
 }
 
+.dark body {
+    color: var(--light-0);
+    background: var(--dark-0);
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Prata', sans-serif;
     line-height: 1.2;
@@ -27,80 +36,18 @@ input::-webkit-input-placeholder {
     color: var(--accent-3);
 }
 
+.dark input::-webkit-input-placeholder {
+    color: var(--light-3);
+}
+
 @media screen and (max-width: 600px) {
     .container {
         padding: 0 15px !important;
     }
 }
 
-
 .container {
     max-width: 1780px;
     margin: 0 auto;
     padding: 0 32px;
-}
-
-.icon {
-    display: flex;
-    align-items: center;
-    border-radius: 2rem;
-    height: 40px;
-    width: 40px;
-    justify-content: center;
-    outline: none;
-    border: 1px solid var(--light-0);
-    transition: background .5s ease, border .5s ease;
-}
-
-.icon:hover {
-    background: var(--light-2);
-    border: 1px solid var(--accent);
-}
-
-.btn-with-arrow {
-    display: flex;
-    align-items: center;
-}
-
-.btn-with-arrow::after {
-    content: '⟶';
-    font-size: 20px;
-    margin-left: 20px;
-}
-
-.btn-light-0 {
-    background: var(--light-0);
-    color: var(--accent-1);
-    border: 1px solid var(--accent-1);
-    border-radius: 2rem;
-    margin: auto;
-    padding: 10px 20px;
-    transition: background .5s ease;
-}
-
-.btn-light-0:hover {
-    background: var(--light-2);
-}
-
-.btn-light-0:focus {
-    background: var(--light-2);
-}
-
-.btn-light-1 {
-    background: var(--light-1);
-    color: var(--accent-1);
-    border: 1px solid var(--accent-1);
-    border-radius: 2rem;
-    margin: auto;
-    padding: 10px 20px;
-    transition: color .5s ease, background .5s ease;
-}
-
-.btn-light-1:hover {
-    background: var(--light-2);
-}
-
-.btn-light-1:focus {
-    color: var(--light-0);
-    background: var(--accent-2);
 }

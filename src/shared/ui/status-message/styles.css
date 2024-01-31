@@ -1,16 +1,16 @@
-.not-found {
+.status-message {
     margin-top: 8px;
     margin-bottom: 28px;
     text-align: center;
 }
 
 @media screen and (max-width: 800px) {
-    .not-found img {
+    .status-message img {
         width: 100% !important;
     }
 }
 
-.not-found img {
+.status-message img {
     display: block;
     aspect-ratio: 1;
     object-fit: cover;
@@ -18,15 +18,15 @@
     width: 350px;
 }
 
-.not-found h1 {
+.status-message h1 {
     font-size: 26px;
     margin-bottom: 20px;
 }
 
-.not-found > div {
+.status-message > div {
     margin-bottom: 5px;
 }
 
-.not-found > a {
+.status-message > a {
     text-decoration: underline !important;
 }

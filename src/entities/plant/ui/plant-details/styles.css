@@ -47,3 +47,8 @@
     border: 1px solid;
     border-radius: var(--border-radius);
 }
+
+.dark .plant__info-card {
+    background: var(--dark-1);
+    color: var(--light-0);
+}
