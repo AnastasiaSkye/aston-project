@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { PlantDetailsResponse, PlantDetailsType, PlantsResponse, PlantType } from 'shared/config';
+import { PlantDetailsType, PlantType } from 'shared/config';
 import { transformPlantDetails, transformPlants } from 'shared/lib';
 
 export const plantsApi = createApi({
@@ -19,7 +19,7 @@ export const plantsApi = createApi({
 					page: 5
 				}
 			}),
-			transformResponse: (res: PlantsResponse) => transformPlants(res)
+			transformResponse: transformPlants
 		}),
 		getPlantsByName: build.query<PlantType[], string>({
 			query: name => ({
@@ -29,7 +29,7 @@ export const plantsApi = createApi({
 					q: name
 				}
 			}),
-			transformResponse: (res: PlantsResponse) => transformPlants(res)
+			transformResponse: transformPlants
 		}),
 		getPlantsById: build.query<PlantDetailsType, number>({
 			query: id => ({
@@ -38,7 +38,7 @@ export const plantsApi = createApi({
 					key: process.env.REACT_APP_PLANTS_API_KEY
 				}
 			}),
-			transformResponse: (res: PlantDetailsResponse) => transformPlantDetails(res)
+			transformResponse: transformPlantDetails
 		})
 	})
 });

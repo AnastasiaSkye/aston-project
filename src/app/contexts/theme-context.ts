@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { Theme } from 'shared/config';
 
+import { Theme } from 'shared/config';
 
 interface ThemeContextType {
 	theme: Theme;

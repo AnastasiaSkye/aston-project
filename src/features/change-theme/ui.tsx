@@ -1,11 +1,10 @@
-import {RiMoonLine} from "react-icons/ri";
-import {GrSun} from "react-icons/gr";
+import { RiMoonLine } from 'react-icons/ri';
+import { GrSun } from 'react-icons/gr';
 
 import { useTheme } from 'entities/theme';
+import { Theme } from 'shared/config';
 
 import './styles.css';
-import { Theme } from '../../shared/config';
-
 
 export function ThemeButton() {
 	const { theme, changeTheme } = useTheme();
