@@ -21,21 +21,29 @@ export function AuthForm({ isLogin }: Props) {
 	const navigate = useNavigate();
 	const user = useAuth();
 
+	const emailValid = useCallback((): boolean =>
+		!!email.toLowerCase().match(emailRegular)
+	, [email]);
+
+	const passwordValid = useCallback((): boolean =>
+		password.length >= 8
+	, [password]);
+
 	const handleErrorEmail = useCallback((): void => {
-		if (email.toLowerCase().match(emailRegular)) {
+		if (emailValid()) {
 			setEmailError('');
 		} else {
 			setEmailError('Please enter a valid e-mail');
 		}
-	}, [email]);
+	}, [emailValid]);
 
 	const handleErrorPassword = useCallback((): void => {
-		if (password.length >= 8) {
+		if (passwordValid()) {
 			setPasswordError('');
 		} else {
 			setPasswordError('Passwords must have 8 characters or more');
 		}
-	}, [password.length]);
+	}, [passwordValid]);
 
 
 	const handleChangeEmail = useCallback((value: string): void => {
@@ -53,7 +61,7 @@ export function AuthForm({ isLogin }: Props) {
 			e.preventDefault();
 			handleErrorEmail();
 			handleErrorPassword();
-			if (email.toLowerCase().match(emailRegular) && password.length >= 8) {
+			if (emailValid() && passwordValid()) {
 				setIsLoading(true);
 				if (isLogin) {
 					await user.signIn(email, password);
@@ -71,7 +79,7 @@ export function AuthForm({ isLogin }: Props) {
 				setFormError('unknown_error');
 			}
 		}
-	}, [user, email, password, isLogin, handleErrorEmail, handleErrorPassword, navigate]);
+	}, [user, email, password, emailValid, passwordValid, isLogin, handleErrorEmail, handleErrorPassword, navigate]);
 
 	return (
 		<Form onSubmit={handleSubmit} className='auth-form' error={formError}>

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { PlantCard } from 'entities/plant';
 import { PlantType } from 'shared/config';
 
@@ -6,9 +8,11 @@ import './styles.css';
 interface Props {
 	title: string;
 	data: PlantType[];
+	favorites: number[];
+	setFavoritePlants?: React.Dispatch<React.SetStateAction<PlantType[]>>;
 }
 
-export function CardList({ title, data }: Props) {
+export function CardList({ title, data, favorites, setFavoritePlants }: Props) {
 	return (
 		<div className='card-list'>
 			<div className='card-list__div'>
@@ -19,7 +23,7 @@ export function CardList({ title, data }: Props) {
 			</div>
 			<section className='card-list__section'>
 				{data.map((item: PlantType) =>
-					<PlantCard key={item.id} plant={item} />
+					<PlantCard key={item.id} plant={item} favorites={favorites} setFavoritePlants={setFavoritePlants} />
 				)}
 			</section>
 			{data?.length === 0 &&

@@ -102,3 +102,14 @@ export const transformPlantDetails = (res: PlantDetailsResponse): PlantDetailsTy
 		description: res.description || 'Missing data',
 		image: getImage(res)
 	});
+
+export const transformPlantDetailsToPlant = (res: PlantDetailsResponse): PlantType =>
+	({
+		id: res.id,
+		name: res.scientific_name[0],
+		cycle: res.cycle || 'Missing data',
+		watering: res.watering || 'Missing data',
+		sunlight: getMissingDataInArray(res.sunlight),
+		image: getImage(res)
+	});
+

@@ -1,6 +1,7 @@
 import { Image } from 'shared/ui';
 
 import './styles.css';
+import { memo } from 'react';
 
 interface Props {
 	src: string;
@@ -8,7 +9,7 @@ interface Props {
 	className?: string;
 }
 
-export function PlantImage({ src, alt, className }: Props) {
+function PlantImageMemo({ src, alt, className }: Props) {
 	return (
 		<div className={`plant-img ${className} ${!src && 'plant-filter'}`}>
 			{src ?
@@ -19,3 +20,5 @@ export function PlantImage({ src, alt, className }: Props) {
 		</div>
 	);
 }
+
+export const PlantImage = memo(PlantImageMemo)
