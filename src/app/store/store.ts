@@ -8,7 +8,7 @@ import { signedInMiddleware } from './middleware';
 export const store = configureStore({
 	reducer: {
 		user: userReducer,
-		[plantsApi.reducerPath]: plantsApi.reducer
+		[plantsApi.reducerPath]: plantsApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat([

@@ -1,6 +1,7 @@
+import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Heart } from 'features/add-to-favorites';
+import { HeartButton } from 'features/add-to-favorites';
 import { PlantType, RouteName } from 'shared/config';
 import { getPlantShortInfo } from 'shared/lib';
 
@@ -10,10 +11,12 @@ import './styles.css';
 
 interface Props {
 	plant: PlantType;
+	favoritesId: number[];
+	setFavoritePlants?: React.Dispatch<React.SetStateAction<PlantType[]>>;
 }
 
-export function PlantCard({ plant }: Props) {
-	return (
+export const PlantCard = memo(({ plant, favoritesId, setFavoritePlants }: Props) =>
+	(
 		<div className='plant-card'>
 			<NavLink to={RouteName.PlANT_PAGE + '/' + plant.id}>
 				<PlantImage src={plant.image} alt={plant.image} />
@@ -28,9 +31,10 @@ export function PlantCard({ plant }: Props) {
 							<div key={el}>{el}</div>
 						)}
 					</div>
-					<Heart />
+					<HeartButton id={plant.id} isFavorite={favoritesId.includes(plant.id)}
+								 setFavoritePlants={setFavoritePlants} />
 				</div>
 			</div>
 		</div>
-	);
-}
+	)
+);

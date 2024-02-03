@@ -1,4 +1,4 @@
-import { Heart } from 'features/add-to-favorites';
+import { HeartButton } from 'features/add-to-favorites';
 import { PlantDetailsType } from 'shared/config';
 import { getPlantInfo } from 'shared/lib';
 
@@ -8,9 +8,10 @@ import './styles.css';
 
 interface Props {
 	plant: PlantDetailsType;
+	favoritesId: number[];
 }
 
-export function PlantDetails({ plant }: Props) {
+export function PlantDetails({ plant, favoritesId }: Props) {
 	return (
 		<div className='plant'>
 			<PlantImage src={plant.image} alt={plant.image} />
@@ -21,7 +22,7 @@ export function PlantDetails({ plant }: Props) {
 					{getPlantInfo(plant).map((el: string) =>
 						<div key={el}>{el}</div>
 					)}
-					<Heart />
+					<HeartButton id={plant.id} isFavorite={favoritesId.includes(plant.id)} />
 				</div>
 			</div>
 		</div>
