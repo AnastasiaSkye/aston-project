@@ -10,13 +10,13 @@ export function Search() {
 	const [searchParams] = useSearchParams();
 	const query = searchParams.get('query') || '';
 	const { data: plantsList = [], isLoading } = useGetPlantsByNameQuery(query);
-	const { favorites, isFavoritesLoading } = useFavorites();
+	const { favoritesId, isFavoritesIdLoading } = useFavorites();
 
-	return isLoading || isFavoritesLoading ? (
+	return isLoading || isFavoritesIdLoading ? (
 		<Loader />
 	) : (
 		<ErrorBoundary FallbackComponent={Fallback}>
-			<CardList title='Search results' data={plantsList} favorites={favorites} />
+			<CardList title='Search results' plants={plantsList} favoritesId={favoritesId} />
 		</ErrorBoundary>
 
 	);

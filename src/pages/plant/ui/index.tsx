@@ -11,14 +11,14 @@ import './styles.css';
 export function Plant() {
 	const { id } = useParams();
 	const { data: plant, isLoading } = useGetPlantsByIdQuery(Number(id));
-	const { favorites, isFavoritesLoading } = useFavorites();
+	const { favoritesId , isFavoritesIdLoading } = useFavorites();
 
-	return isLoading || isFavoritesLoading ? (
+	return isLoading || isFavoritesIdLoading ? (
 		<Loader />
 	) : (
 		<ErrorBoundary FallbackComponent={Fallback}>
 			{plant ?
-				<PlantDetails plant={plant} favorites={favorites}/>
+				<PlantDetails plant={plant} favoritesId={favoritesId}/>
 				:
 				<h2 className='nothing-found'>Nothing found</h2>
 			}

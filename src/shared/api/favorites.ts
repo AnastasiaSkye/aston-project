@@ -1,23 +1,17 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-import { PlantType } from 'shared/config';
+import { PlantDetailsResponse, PlantType } from 'shared/config';
 import { transformPlantDetailsToPlant } from 'shared/lib';
 
-export const favoritesApi = createApi({
-	baseQuery: fetchBaseQuery({
-		method: 'GET',
-		baseUrl: process.env.REACT_APP_PLANTS_API_HOST
-	}),
-	reducerPath: 'favoritesApi',
-	endpoints: build => ({
-		getPlantsById: build.query<PlantType, number>({
-			query: id => ({
-				url: `/species/details/${id}`,
-				params: {
-					key: process.env.REACT_APP_PLANTS_API_KEY
+export const favoritesApi = {
+	async getPlantById(id : number) : Promise<PlantType | undefined> {
+		try {
+			const response = await fetch(`${process.env.REACT_APP_PLANTS_API_HOST}/species/details/${id}?key=${process.env.REACT_APP_PLANTS_API_KEY}`, {
+				method: 'GET',
+				headers: {
+					Accept: 'application/json'
 				}
-			}),
-			transformResponse: transformPlantDetailsToPlant
-		})
-	})
-});
+			})
+			const result = (await response.json()) as PlantDetailsResponse;
+			return transformPlantDetailsToPlant(result);
+		} catch (e) {}
+	}
+}

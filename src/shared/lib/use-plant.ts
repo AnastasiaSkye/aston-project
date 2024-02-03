@@ -1,19 +1,13 @@
 import { useCallback } from 'react';
 
 import { favoritesApi } from 'shared/api';
-import { useAppDispatch } from 'shared/lib';
 import { PlantType } from 'shared/config';
 
 export const usePlant = () => {
-	const dispatch = useAppDispatch();
 
-	const getPlantsById = useCallback(async (id: number): Promise<PlantType | undefined> => {
-		const { data } = await dispatch(favoritesApi.endpoints.getPlantsById.initiate(id));
-		if (!data) {
-			return data;
-		}
-		return data;
-	}, [dispatch]);
+	const getPlantById = useCallback(async (id: number): Promise<PlantType | undefined> =>
+			await favoritesApi.getPlantById(id)
+		, []);
 
 	const filterPlants = useCallback((plants: (PlantType | undefined)[]): PlantType[] => {
 		let data = [];
@@ -25,8 +19,16 @@ export const usePlant = () => {
 		return data;
 	}, []);
 
+	const getPlants = useCallback(async (favorites: number[]): Promise<PlantType[]> => {
+		const favoritePlants = await Promise.all(
+			favorites.map(async (id: number) =>
+				await getPlantById(id)
+			)
+		);
+		return filterPlants(favoritePlants);
+	}, [filterPlants, getPlantById]);
+
 	return {
-		getPlantsById,
-		filterPlants
+		getPlants
 	};
 };

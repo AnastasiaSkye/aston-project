@@ -7,13 +7,13 @@ import { Fallback, Loader } from 'shared/ui';
 
 export function Main() {
 	const { data: plantsList = [], isLoading } = useGetPlantsQuery();
-	const { favorites, isFavoritesLoading } = useFavorites();
+	const { favoritesId, isFavoritesIdLoading } = useFavorites();
 
-	return isLoading || isFavoritesLoading ? (
+	return isLoading || isFavoritesIdLoading ? (
 		<Loader />
 	) : (
 		<ErrorBoundary FallbackComponent={Fallback}>
-			<CardList title='Indoor plants' data={plantsList} favorites={favorites} />
+			<CardList title='Indoor plants' plants={plantsList} favoritesId={favoritesId} />
 		</ErrorBoundary>
 	);
 }
