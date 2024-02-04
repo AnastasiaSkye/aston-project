@@ -6,6 +6,7 @@
   "extends": [
     "react-app",
     "react-app/jest",
+    "plugin:testing-library/react",
     "prettier"
   ],
   "parserOptions": {
