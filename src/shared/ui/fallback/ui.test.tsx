@@ -1,7 +1,5 @@
 import { render, screen } from '@testing-library/react';
 
-import '@testing-library/jest-dom';
-
 import { Fallback } from './ui';
 
 describe('Fallback ui', () => {

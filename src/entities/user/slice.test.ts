@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom'
-
 import { AuthStatus } from 'shared/config';
 
 import { slice, userReducer } from './slice';
@@ -21,8 +19,8 @@ describe('userSlice', () => {
 				email: 'user@mail.ru'
 			},
 			authStatus: AuthStatus.SignedIn
-		})
-	})
+		});
+	});
 
 	test('userSignedIn', () => {
 		expect(userReducer({
@@ -40,8 +38,8 @@ describe('userSlice', () => {
 				email: 'user2@mail.ru'
 			},
 			authStatus: AuthStatus.SignedIn
-		})
-	})
+		});
+	});
 
 	test('userSignedOut', () => {
 		expect(userReducer({
@@ -56,6 +54,6 @@ describe('userSlice', () => {
 				email: ''
 			},
 			authStatus: AuthStatus.SignedOut
-		})
-	})
-})
+		});
+	});
+});

@@ -1,7 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import '@testing-library/jest-dom';
-
 import { Form } from './ui';
 
 describe('Form ui', () => {

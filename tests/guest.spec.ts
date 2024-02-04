@@ -31,7 +31,7 @@ test.describe('Guest', () => {
 		const name = plantDetails.getByRole('heading');
 		await expect(name).toBeVisible();
 		const description = plantDetails.getByTestId('description');
-		await expect(description).toBeVisible()
+		await expect(description).toBeVisible();
 		const infoCard = plantDetails.getByTestId('info-card');
 		await expect(infoCard).toBeVisible();
 	});
