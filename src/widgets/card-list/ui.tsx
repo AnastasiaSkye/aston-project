@@ -14,16 +14,16 @@ interface Props {
 
 export function CardList({ title, plants, favoritesId, setFavoritePlants }: Props) {
 	return (
-		<div className='card-list'>
+		<div className='card-list' data-testid='card-list'>
 			<div className='card-list__div'>
-				<h1>{title}</h1>
+				<h1 data-testid='title'>{title}</h1>
 				<div>
 					Here everyone can find the ideal plant that matches your preferences
 				</div>
 			</div>
 			<section className='card-list__section'>
 				{plants.map((item: PlantType) =>
-					<PlantCard key={item.id} plant={item} favoritesId={favoritesId} setFavoritePlants={setFavoritePlants} />
+					<PlantCard key={item.id} plant={item} isFavorite={favoritesId.includes(item.id)} setFavoritePlants={setFavoritePlants} />
 				)}
 			</section>
 			{plants?.length === 0 &&

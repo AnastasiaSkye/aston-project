@@ -11,7 +11,7 @@ import './styles.css';
 
 export function Header() {
 	return (
-		<header className='header'>
+		<header className='header' data-testid='header'>
 			<div className='container'>
 				<div className='header__row'>
 					<Logo />

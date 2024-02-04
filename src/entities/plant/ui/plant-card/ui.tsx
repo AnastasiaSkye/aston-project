@@ -11,15 +11,15 @@ import './styles.css';
 
 interface Props {
 	plant: PlantType;
-	favoritesId: number[];
+	isFavorite: boolean;
 	setFavoritePlants?: React.Dispatch<React.SetStateAction<PlantType[]>>;
 }
 
-export const PlantCard = memo(({ plant, favoritesId, setFavoritePlants }: Props) =>
+export const PlantCard = memo(({ plant, isFavorite, setFavoritePlants }: Props) =>
 	(
-		<div className='plant-card'>
+		<div className='plant-card' data-testid='plant-card'>
 			<NavLink to={RouteName.PlANT_PAGE + '/' + plant.id}>
-				<PlantImage src={plant.image} alt={plant.image} />
+				<PlantImage src={plant.image} alt={plant.name} />
 			</NavLink>
 			<div className='plant-card__div'>
 				<NavLink to={RouteName.PlANT_PAGE + '/' + plant.id}>
@@ -31,7 +31,7 @@ export const PlantCard = memo(({ plant, favoritesId, setFavoritePlants }: Props)
 							<div key={el}>{el}</div>
 						)}
 					</div>
-					<HeartButton id={plant.id} isFavorite={favoritesId.includes(plant.id)}
+					<HeartButton id={plant.id} isFavorite={isFavorite}
 								 setFavoritePlants={setFavoritePlants} />
 				</div>
 			</div>
