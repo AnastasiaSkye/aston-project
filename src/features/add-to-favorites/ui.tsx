@@ -37,11 +37,11 @@ function HeartButtonMemo({ id, isFavorite, setFavoritePlants }: Props) {
 	};
 
 	return (
-		<button className='heart' onClick={handleClick}>
+		<button className='heart' onClick={handleClick} data-testid='heart'>
 			{isAdded ?
-				<PiHeartFill size={25} />
+				<PiHeartFill size={25} data-testid='heart-add'/>
 				:
-				<PiHeartLight size={25} />
+				<PiHeartLight size={25} data-testid='heart-remove'/>
 			}
 		</button>
 	);

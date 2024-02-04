@@ -82,12 +82,12 @@ export function AuthForm({ isLogin }: Props) {
 	}, [user, email, password, emailValid, passwordValid, isLogin, handleErrorEmail, handleErrorPassword, navigate]);
 
 	return (
-		<Form onSubmit={handleSubmit} className='auth-form' error={formError}>
+		<Form onSubmit={handleSubmit} className='auth-form' error={formError} data-testid='auth-form'>
 			<Input placeholder='Email' type='email' label={emailLabel}
-				   handleChange={handleChangeEmail}
+				   handleChange={handleChangeEmail} id='username'
 				   onBlur={handleErrorEmail} error={emailError} />
 			<Input placeholder='Password' type='password' label={passwordLabel}
-				   handleChange={handleChangePassword}
+				   handleChange={handleChangePassword} id='password'
 				   onBlur={handleErrorPassword} error={passwordError} />
 			<Button className={`${isLoading && 'loading'}`} type='submit'>
 				{isLoading ? 'Loading...' : (isLogin ? 'Sign in' : 'Sign up')}

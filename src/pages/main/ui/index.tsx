@@ -13,7 +13,7 @@ export function Main() {
 		<Loader />
 	) : (
 		<ErrorBoundary FallbackComponent={Fallback}>
-			<CardList title='Indoor plants' plants={plantsList} favoritesId={favoritesId} />
+			<CardList title='Indoor plants' plants={plantsList} favoritesId={favoritesId}/>
 		</ErrorBoundary>
 	);
 }

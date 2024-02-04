@@ -12,7 +12,7 @@ export function Favorites() {
 		<Loader />
 	) : (
 		<ErrorBoundary FallbackComponent={Fallback}>
-			<CardList title='Favourite plants' plants={favoritePlants} favoritesId={favoritesId}
+			<CardList title='Favorite plants' plants={favoritePlants} favoritesId={favoritesId}
 					  setFavoritePlants={setFavoritePlants}/>
 		</ErrorBoundary>
 	);

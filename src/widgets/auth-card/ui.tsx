@@ -12,7 +12,7 @@ interface Props {
 
 export function AuthCard({ isLogin }: Props) {
 	return (
-		<div className='auth-card'>
+		<div className='auth-card' data-testid='auth-card'>
 			<h1>{isLogin ? 'Login' : 'Registration'}</h1>
 			<AuthForm isLogin={isLogin} />
 			<div className='auth-card__div'>
