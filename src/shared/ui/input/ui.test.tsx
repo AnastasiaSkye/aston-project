@@ -12,7 +12,7 @@ describe('Input ui', () => {
 	test('label dont renders', () => {
 		render(<Input label='Email' />);
 		const label = screen.queryByText('Email');
-		expect(label).toBeNull();
+		expect(label).not.toBeInTheDocument();
 	});
 
 	test('onClick have been called', () => {
