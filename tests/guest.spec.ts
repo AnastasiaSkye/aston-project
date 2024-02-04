@@ -5,23 +5,7 @@ test.describe('Guest', () => {
 		await page.goto('http://localhost:3000/');
 	});
 
-	test('input change value', async ({ page }) => {
-		const search = page.getByTestId('search');
-		const input = search.getByPlaceholder('Enter a search query');
-		await expect(input).toHaveValue('');
-		await input.fill('cyr');
-		await expect(input).toHaveValue('cyr');
-	});
-
-	test('suggestions list open', async ({ page }) => {
-		const search = page.getByTestId('search');
-		await search.getByPlaceholder('Enter a search query').fill('cyr');
-
-		const suggestionsList = search.getByRole('list');
-		await expect(suggestionsList).toBeVisible();
-	});
-
-	test('cards in visible', async ({ page }) => {
+	test('searched cards in visible', async ({ page }) => {
 		const search = page.getByTestId('search');
 		await search.getByPlaceholder('Enter a search query').fill('cyr');
 

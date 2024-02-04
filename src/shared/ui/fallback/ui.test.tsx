@@ -9,10 +9,6 @@ describe('Fallback ui', () => {
 		render(<Fallback/>);
 		const fallback = screen.getByText('Try reloading the page');
 		expect(fallback).toBeInTheDocument();
-	});
-
-	test('fallback img renders', () => {
-		render(<Fallback/>);
 		const img = screen.getByAltText('Gif');
 		expect(img).toBeInTheDocument();
 	});

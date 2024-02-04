@@ -15,7 +15,6 @@ describe('Button ui', () => {
 		const onClickMock = jest.fn();
 		render(<Button onClick={onClickMock}>Text</Button>);
 		const button = screen.getByText('Text');
-		expect(button).toBeInTheDocument();
 		fireEvent.click(button);
 		expect(onClickMock).toHaveBeenCalledTimes(1);
 	});
