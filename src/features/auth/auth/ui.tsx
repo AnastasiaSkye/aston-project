@@ -46,14 +46,14 @@ export function AuthForm({ isLogin }: Props) {
 	}, [passwordValid]);
 
 
-	const handleChangeEmail = useCallback((value: string): void => {
-		setEmail(value);
-		value === '' ? setEmailLabel('') : setEmailLabel('Email');
+	const handleChangeEmail = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
+		setEmail(e.target.value);
+		e.target.value === '' ? setEmailLabel('') : setEmailLabel('Email');
 	}, []);
 
-	const handleChangePassword = useCallback((value: string): void => {
-		setPassword(value);
-		value === '' ? setPasswordLabel('') : setPasswordLabel('Password');
+	const handleChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
+		setPassword(e.target.value);
+		e.target.value === '' ? setPasswordLabel('') : setPasswordLabel('Password');
 	}, []);
 
 	const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>): Promise<void> => {
@@ -84,10 +84,10 @@ export function AuthForm({ isLogin }: Props) {
 	return (
 		<Form onSubmit={handleSubmit} className='auth-form' error={formError} data-testid='auth-form'>
 			<Input placeholder='Email' type='email' label={emailLabel}
-				   handleChange={handleChangeEmail} id='username'
+				   onChange={handleChangeEmail} id='username'
 				   onBlur={handleErrorEmail} error={emailError} />
 			<Input placeholder='Password' type='password' label={passwordLabel}
-				   handleChange={handleChangePassword} id='password'
+				   onChange={handleChangePassword} id='password'
 				   onBlur={handleErrorPassword} error={passwordError} />
 			<Button className={`${isLoading && 'loading'}`} type='submit'>
 				{isLoading ? 'Loading...' : (isLogin ? 'Sign in' : 'Sign up')}

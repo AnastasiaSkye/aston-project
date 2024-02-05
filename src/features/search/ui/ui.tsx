@@ -1,4 +1,4 @@
-import { FormEvent, useCallback, useState } from 'react';
+import React, { FormEvent, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoSearch } from 'react-icons/io5';
 
@@ -10,16 +10,15 @@ import { SuggestionsList } from './suggestions-list';
 
 import './styles.css';
 
-
 export function SearchForm() {
 	const [query, setQuery] = useState<string>('');
 	const [isOpen, setIsOpen] = useState<boolean>(true);
 	const debouncedQuery = useDebounce(query, 500);
 	const navigate = useNavigate();
 
-	const handleChange = useCallback((query: string): void => {
-		if (query && query.length >= 2) {
-			setQuery(query);
+	const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
+		if (e.target.value && e.target.value.length >= 2) {
+			setQuery(e.target.value);
 		} else {
 			setQuery('');
 		}
@@ -45,7 +44,7 @@ export function SearchForm() {
 		<>
 			<Form onSubmit={handleSubmit}>
 				<Input placeholder='Enter a search query'
-					   handleChange={handleChange}
+					   onChange={handleChange}
 					   onFocus={handleFocus}
 					   onBlur={handleBlur}
 				/>
