@@ -1,19 +1,21 @@
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { CardList } from 'widgets/card-list';
-import { useFavoritePlants, useFavorites } from 'entities/favorite';
+import { FavoriteCard, useFavorites } from 'entities/favorite';
 import { Fallback, Loader } from 'shared/ui';
 
 export function Favorites() {
 	const { favoritesId, isFavoritesIdLoading } = useFavorites();
-	const { favoritePlants, isFavoritePlantsLoading, setFavoritePlants } = useFavoritePlants();
 
-	return isFavoritePlantsLoading || isFavoritesIdLoading ? (
+	return isFavoritesIdLoading ? (
 		<Loader />
 	) : (
 		<ErrorBoundary FallbackComponent={Fallback}>
-			<CardList title='Favorite plants' plants={favoritePlants} favoritesId={favoritesId}
-					  setFavoritePlants={setFavoritePlants}/>
+			<CardList title='Favorite plants' isEmpty={favoritesId.length === 0}>
+				{favoritesId.map((item: number) =>
+					<FavoriteCard key={item} favoriteId={item}/>
+				)}
+			</CardList>
 		</ErrorBoundary>
 	);
 }
