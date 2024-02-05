@@ -1,18 +1,14 @@
 import React from 'react';
 
-import { PlantCard } from 'entities/plant';
-import { PlantType } from 'shared/config';
-
 import './styles.css';
 
 interface Props {
 	title: string;
-	plants: PlantType[];
-	favoritesId: number[];
-	setFavoritePlants?: React.Dispatch<React.SetStateAction<PlantType[]>>;
+	isEmpty: boolean;
+	children: React.ReactNode;
 }
 
-export function CardList({ title, plants, favoritesId, setFavoritePlants }: Props) {
+export function CardList({ title, children, isEmpty }: Props) {
 	return (
 		<div className='card-list' data-testid='card-list'>
 			<div className='card-list__div'>
@@ -22,11 +18,9 @@ export function CardList({ title, plants, favoritesId, setFavoritePlants }: Prop
 				</div>
 			</div>
 			<section className='card-list__section'>
-				{plants.map((item: PlantType) =>
-					<PlantCard key={item.id} plant={item} isFavorite={favoritesId.includes(item.id)} setFavoritePlants={setFavoritePlants} />
-				)}
+				{children}
 			</section>
-			{plants?.length === 0 &&
+			{isEmpty &&
 				<h2>Nothing found</h2>
 			}
 		</div>

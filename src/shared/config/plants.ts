@@ -13,7 +13,7 @@ export interface PlantResponse {
 	scientific_name: string[];
 	cycle: string;
 	watering: string;
-	sunlight: string | string[];
+	sunlight: string[];
 	default_image: DefaultImage | null;
 }
 
@@ -22,7 +22,7 @@ export interface PlantType {
 	name: string;
 	cycle: string;
 	watering: string;
-	sunlight: string | string[];
+	sunlight: string[];
 	image: string;
 }
 

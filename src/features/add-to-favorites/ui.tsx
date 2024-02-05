@@ -1,32 +1,35 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PiHeartFill, PiHeartLight } from 'react-icons/pi';
 
+import { FavoritesContext } from 'app/contexts';
 import { favorite } from 'entities/favorite';
 import { useAuth } from 'entities/user';
-import { AuthStatus, PlantType, RouteName } from 'shared/config';
+import { AuthStatus, RouteName } from 'shared/config';
 
 import './styles.css';
 
 interface Props {
 	id: number;
 	isFavorite: boolean;
-	setFavoritePlants?: React.Dispatch<React.SetStateAction<PlantType[]>>;
 }
 
-function HeartButtonMemo({ id, isFavorite, setFavoritePlants }: Props) {
+export const HeartButton = memo(({ id, isFavorite}: Props) => {
 	const { authStatus } = useAuth();
 	const [isAdded, setIsAdded] = useState<boolean>(isFavorite);
+	const { setFavoritesId } = useContext(FavoritesContext);
 	const navigate = useNavigate();
+
+	const removeFavoriteId = useCallback((id: number): void => {
+		setFavoritesId(favorite => favorite.filter(f => f !== id));
+	}, [setFavoritesId]);
 
 	const handleClick = async (): Promise<void> => {
 		if (authStatus === AuthStatus.SignedIn) {
 			if (isAdded) {
 				void await favorite.removeFavorite(id);
 				setIsAdded(false);
-				if (setFavoritePlants) {
-					setFavoritePlants(p => p.filter(el => el.id !== id));
-				}
+				removeFavoriteId(id)
 			} else {
 				void await favorite.addFavorite(id);
 				setIsAdded(true);
@@ -45,6 +48,4 @@ function HeartButtonMemo({ id, isFavorite, setFavoritePlants }: Props) {
 			}
 		</button>
 	);
-}
-
-export const HeartButton = memo(HeartButtonMemo);
+})

@@ -36,31 +36,10 @@ export const getPlantInfo = (plant: PlantDetailsType): string[] =>
 const getMissingDataInArray = (array: string[]): string[] =>
 	array.length === 0 ? ['Missing data'] : array;
 
-const getInfoFromArray = (info: string | string[]): string | string[] => {
-	if (info.includes('Upgrade Plans To Premium')) {
-		return ['Missing data'];
-	} else if (Array.isArray(info)) {
-		return getMissingDataInArray(info);
-	} else {
-		return info || 'Missing data';
-	}
-};
 
-const getInfo = (info: string): string => {
-	if (info.includes('Upgrade Plans To Premium')) {
-		return 'Missing data';
-	} else {
-		return info || 'Missing data';
-	}
-};
+const isAvailable = (plant: PlantResponse): boolean =>
+	plant.default_image?.original_url !== 'https://perenual.com/storage/image/upgrade_access.jpg'
 
-const getImage = (plant: PlantResponse): string => {
-	if (plant.default_image?.original_url === 'https://perenual.com/storage/image/upgrade_access.jpg') {
-		return '';
-	} else {
-		return plant.default_image?.original_url || '';
-	}
-};
 
 const getHardinessZone = (hardiness: Hardiness): string =>
 	hardiness.min + ' - ' + hardiness.max;
@@ -70,13 +49,13 @@ const getString = (boolean: boolean): string =>
 	boolean ? 'Yes' : 'No';
 
 export const transformPlants = (res: PlantsResponse): PlantType[] =>
-	res.data.map(plant => ({
+	res.data.filter(plant => isAvailable(plant)).map(plant => ({
 		id: plant.id,
 		name: plant.scientific_name[0],
-		cycle: getInfo(plant.cycle),
-		watering: getInfo(plant.watering),
-		sunlight: getInfoFromArray(plant.sunlight),
-		image: getImage(plant)
+		cycle: plant.cycle || 'Missing data',
+		watering:plant.watering || 'Missing data',
+		sunlight: getMissingDataInArray(plant.sunlight),
+		image: plant.default_image?.original_url || ''
 	}));
 
 
@@ -100,7 +79,7 @@ export const transformPlantDetails = (res: PlantDetailsResponse): PlantDetailsTy
 		leaf: getString(res.leaf),
 		leafColor: getMissingDataInArray(res.leaf_color),
 		description: res.description || 'Missing data',
-		image: getImage(res)
+		image: res.default_image?.original_url || ''
 	});
 
 export const transformPlantDetailsToPlant = (res: PlantDetailsResponse): PlantType =>
@@ -110,6 +89,6 @@ export const transformPlantDetailsToPlant = (res: PlantDetailsResponse): PlantTy
 		cycle: res.cycle || 'Missing data',
 		watering: res.watering || 'Missing data',
 		sunlight: getMissingDataInArray(res.sunlight),
-		image: getImage(res)
+		image: res.default_image?.original_url || ''
 	});
 
