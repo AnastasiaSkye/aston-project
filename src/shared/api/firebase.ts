@@ -69,7 +69,7 @@ export const firebaseApi = {
 		}
 	},
 
-	async addSearchedHistory (query: string): Promise<void> {
+	async addSearchedHistory(query: string): Promise<void> {
 		const userId = auth.currentUser?.uid;
 		if (!userId) {
 			return;
@@ -77,12 +77,12 @@ export const firebaseApi = {
 		const searchListRef = ref(database, 'history/' + userId);
 		const newSearchesRef = push(searchListRef);
 		await set(newSearchesRef, {
-				query,
-				data: formatDate(new Date())
+			query,
+			data: formatDate(new Date())
 		});
 	},
 
-	async removeSearchedHistory (id: string): Promise<void> {
+	async removeSearchedHistory(id: string): Promise<void> {
 		const userId = auth.currentUser?.uid;
 		if (!userId) {
 			return;
@@ -91,7 +91,7 @@ export const firebaseApi = {
 		await remove(searchRef);
 	},
 
-	async getSearchHistory (): Promise<SearchHistory> {
+	async getSearchHistory(): Promise<SearchHistory> {
 		const userId = auth.currentUser?.uid;
 		if (!userId) {
 			return [];
@@ -99,7 +99,7 @@ export const firebaseApi = {
 		const dbRef = ref(database);
 		const snapshot = await get(child(dbRef, 'history/' + userId));
 		if (snapshot.exists()) {
-			const data = snapshot.val() as Record<string, {query: string, data: string}>;
+			const data = snapshot.val() as Record<string, { query: string, data: string }>;
 			return Object.entries(data).map(([key, value]) => ({ id: key, query: value.query, data: value.data }));
 		} else {
 			return [];

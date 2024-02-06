@@ -15,8 +15,8 @@
 }
 
 .loading {
-    color: var(--accent-1)!important;
-    background: var(--light-2)!important;
+    color: var(--accent-1) !important;
+    background: var(--light-2) !important;
 }
 
 .dark .btn-accent-1 {
@@ -30,6 +30,6 @@
 }
 
 .dark .loading {
-    color: var(--light-1)!important;
-    background: var(--dark-2)!important;
+    color: var(--light-1) !important;
+    background: var(--dark-2) !important;
 }

@@ -1,7 +1,7 @@
-const accent = '#1074d2'
-const light0 = '#fbfbff'
-const dark0 = '#031628'
-const borderRadius = '7px'
+const accent = '#1074d2';
+const light0 = '#fbfbff';
+const dark0 = '#031628';
+const borderRadius = '7px';
 
 export const toastOptionsLight = {
 	style: {
@@ -14,7 +14,7 @@ export const toastOptionsLight = {
 		primary: accent,
 		secondary: light0
 	}
-}
+};
 
 export const toastOptionsDark = {
 	style: {
@@ -27,4 +27,4 @@ export const toastOptionsDark = {
 		primary: light0,
 		secondary: dark0
 	}
-}
+};

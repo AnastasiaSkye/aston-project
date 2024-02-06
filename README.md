@@ -12,8 +12,8 @@
 
 - Регистрация и авторизация пользователей
 - Избранные растения: пользователь может добавлять или удалять из списка избранных
-- Поиск по названию растения, выпадающее меню из растений
-- История поиска: сохранение даты и названия растений, возможность перейти на страницу поиска после нажатия на название растения или дату
+- Поиск по названию растения, выпадающее меню с растениями
+- История поиска: сохранение даты и поискового запроса, возможность перейти на страницу поиска или удалить запрос
 
 ---
 
@@ -21,14 +21,13 @@
 
 ### 1 уровень (обязательный - необходимый минимум)
 
-- [ ] Реализованы Требования к функциональности
-- [ ] Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем LocalStorage
+- [x] Реализованы Требования к функциональности
 
 #### React
 
 - [x] Пишем функциональные компоненты c хуками в приоритете над классовыми
-- [x] Есть разделение на умные и глупые компоненты: [Умный](src/features/search/ui/ui.tsx), [Глупый](src/shared/ui/image/ui.tsx)
-- [x] Есть рендеринг списков: [CardList](src/widgets/card-list/ui.tsx)
+- [x] Есть разделение на умные и глупые компоненты: [Умный](src/features/search/ui/ui.tsx), [Глупый](src/shared/ui/button/ui.tsx)
+- [x] Есть рендеринг списков: [Main](src/pages/main/ui/index.tsx), [HistoryTable](src/entities/history/ui/ui.tsx)
 - [x] Реализована хотя бы одна форма: [AuthForm](src/features/auth/auth/ui.tsx)
 - [x] Есть применение Контекст API: [ThemeContext](src/app/contexts/theme-context.ts), [ThemeProvider](src/app/providers/theme-provider.tsx)
 - [x] Есть применение предохранителя: [ErrorBoundary](src/pages/main/ui/index.tsx)
@@ -50,6 +49,22 @@
 ### 2 уровень (необязательный)
 
 - [x] Используется TypeScript
-- [x] Использвуется Firebase: [firebaseApi](src/shared/api/firebase.ts)
+- [x] Используется Firebase: [firebaseApi](src/shared/api/firebase.ts)
 - [x] настроен CI/CD
+- [x] Добавлены через react-testing-library и Playwright: [Input](src/shared/ui/input/ui.test.tsx), [Guest](tests/guest.spec.ts), [User](tests/user.spec.ts)
 - [x] Связь UI и бизнес-логики построена не через команды, а через события: [Logout](src/features/auth/logout/ui.tsx), [useAuth](src/entities/user/use-auth.ts)
+
+---
+
+### Дополнительная информация
+
+- [x] Использован `Feature-Sliced Design` подход
+- [x] Использован `react-hot-toast` для отображения сообщения об авторизации: [signedInMiddleware](src/app/store/middleware.ts), [BaseLayout](src/widgets/layouts/base-layout/ui.tsx)
+- [x] Использован `react-icons`: [HeartButton](src/features/add-to-favorites/ui.tsx), [ThemeButton](src/features/change-theme/ui.tsx)
+- [x] Использован `moment` для удобного форматирования даты: [formatDate](src/shared/lib/format-date.ts)
+
+---
+
+### Диаграмма
+
+![Alt text](assets/plants.png)

@@ -15,7 +15,7 @@ interface Props {
 	queryParam: string;
 }
 
-export function SearchForm({queryParam} : Props) {
+export function SearchForm({ queryParam }: Props) {
 	const [query, setQuery] = useState<string>(queryParam);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const debouncedQuery = useDebounce(query, 500);

@@ -13,7 +13,7 @@ export function Favorites() {
 		<ErrorBoundary FallbackComponent={Fallback}>
 			<CardList title='Favorite plants' isEmpty={favoritesId.length === 0}>
 				{favoritesId.map((item: number) =>
-					<FavoriteCard key={item} favoriteId={item}/>
+					<FavoriteCard key={item} favoriteId={item} />
 				)}
 			</CardList>
 		</ErrorBoundary>

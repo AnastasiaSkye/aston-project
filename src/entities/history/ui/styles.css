@@ -4,12 +4,12 @@
     margin-bottom: 20px;
 }
 
-.history-table > div{
+.history-table > div {
     border-bottom: 1px solid;
 }
 
 .history-table > div:last-child {
-    border-bottom: none!important;
+    border-bottom: none !important;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 

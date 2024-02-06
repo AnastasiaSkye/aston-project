@@ -22,12 +22,12 @@ export function AuthForm({ isLogin }: Props) {
 	const user = useAuth();
 
 	const emailValid = useCallback((): boolean =>
-		!!email.toLowerCase().match(emailRegular)
-	, [email]);
+			!!email.toLowerCase().match(emailRegular)
+		, [email]);
 
 	const passwordValid = useCallback((): boolean =>
-		password.length >= 8
-	, [password]);
+			password.length >= 8
+		, [password]);
 
 	const handleErrorEmail = useCallback((): void => {
 		if (emailValid()) {

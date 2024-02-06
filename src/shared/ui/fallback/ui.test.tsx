@@ -4,7 +4,7 @@ import { Fallback } from './ui';
 
 describe('Fallback ui', () => {
 	test('fallback renders', () => {
-		render(<Fallback/>);
+		render(<Fallback />);
 		const fallback = screen.getByText('Try reloading the page');
 		expect(fallback).toBeInTheDocument();
 		const img = screen.getByAltText('Gif');

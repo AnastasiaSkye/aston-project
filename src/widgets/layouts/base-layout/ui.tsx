@@ -16,9 +16,9 @@ export function BaseLayout() {
 				</div>
 			</main>
 			{theme === Theme.Light ?
-				<Toaster toastOptions={toastOptionsLight}/>
+				<Toaster toastOptions={toastOptionsLight} />
 				:
-				<Toaster toastOptions={toastOptionsDark}/>
+				<Toaster toastOptions={toastOptionsDark} />
 			}
 		</>
 	);

@@ -38,7 +38,7 @@ const getMissingDataInArray = (array: string[]): string[] =>
 
 
 const isAvailable = (plant: PlantResponse): boolean =>
-	plant.default_image?.original_url !== 'https://perenual.com/storage/image/upgrade_access.jpg'
+	plant.default_image?.original_url !== 'https://perenual.com/storage/image/upgrade_access.jpg';
 
 
 const getHardinessZone = (hardiness: Hardiness): string =>
@@ -53,7 +53,7 @@ export const transformPlants = (res: PlantsResponse): PlantType[] =>
 		id: plant.id,
 		name: plant.scientific_name[0],
 		cycle: plant.cycle || 'Missing data',
-		watering:plant.watering || 'Missing data',
+		watering: plant.watering || 'Missing data',
 		sunlight: getMissingDataInArray(plant.sunlight),
 		image: plant.default_image?.original_url || ''
 	}));
