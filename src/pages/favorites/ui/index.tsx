@@ -1,11 +1,11 @@
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { CardList } from 'widgets/card-list';
-import { FavoriteCard, useFavorites } from 'entities/favorite';
+import { FavoriteCard, useFavoritesId } from 'entities/favorite';
 import { Fallback, Loader } from 'shared/ui';
 
 export function Favorites() {
-	const { favoritesId, isFavoritesIdLoading } = useFavorites();
+	const { favoritesId, isFavoritesIdLoading } = useFavoritesId();
 
 	return isFavoritesIdLoading ? (
 		<Loader />

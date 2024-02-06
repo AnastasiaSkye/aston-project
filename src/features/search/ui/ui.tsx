@@ -2,6 +2,7 @@ import React, { FormEvent, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoSearch } from 'react-icons/io5';
 
+import { history } from 'entities/history';
 import { Form, Input } from 'shared/ui';
 import { RouteName } from 'shared/config';
 import { useDebounce } from 'shared/lib';
@@ -10,18 +11,18 @@ import { SuggestionsList } from './suggestions-list';
 
 import './styles.css';
 
-export function SearchForm() {
-	const [query, setQuery] = useState<string>('');
-	const [isOpen, setIsOpen] = useState<boolean>(true);
+interface Props {
+	queryParam: string;
+}
+
+export function SearchForm({queryParam} : Props) {
+	const [query, setQuery] = useState<string>(queryParam);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const debouncedQuery = useDebounce(query, 500);
 	const navigate = useNavigate();
 
 	const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
-		if (e.target.value && e.target.value.length >= 2) {
-			setQuery(e.target.value);
-		} else {
-			setQuery('');
-		}
+		setQuery(e.target.value);
 	}, []);
 
 	const handleFocus = useCallback((): void => {
@@ -32,10 +33,11 @@ export function SearchForm() {
 		setTimeout(() => setIsOpen(false), 300);
 	}, []);
 
-	const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>): void => {
+	const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>): Promise<void> => {
 		e.preventDefault();
 		if (query.length !== 0) {
 			setIsOpen(false);
+			await history.addSearchedHistory(query);
 			navigate(RouteName.SEARCH_PAGE + '?query=' + query);
 		}
 	}, [navigate, query]);
@@ -44,6 +46,7 @@ export function SearchForm() {
 		<>
 			<Form onSubmit={handleSubmit}>
 				<Input placeholder='Enter a search query'
+					   value={query}
 					   onChange={handleChange}
 					   onFocus={handleFocus}
 					   onBlur={handleBlur}
@@ -52,7 +55,7 @@ export function SearchForm() {
 					<IoSearch size={20} />
 				</button>
 			</Form>
-			{debouncedQuery && isOpen &&
+			{debouncedQuery && isOpen && debouncedQuery.length >= 2 &&
 				<SuggestionsList query={debouncedQuery} />
 			}
 		</>

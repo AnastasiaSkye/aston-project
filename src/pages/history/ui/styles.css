@@ -1,0 +1,27 @@
+.history__div {
+    text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+    .history__div h1 {
+        font-size: 45px !important;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 500px) {
+    .history__div h1 {
+        font-size: 50px !important;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 600px) {
+    .history__div h1 {
+        font-size: 60px !important;
+    }
+}
+
+.history__div h1 {
+    font-size: 80px;
+    margin-bottom: 40px;
+    margin-top: 50px;
+}

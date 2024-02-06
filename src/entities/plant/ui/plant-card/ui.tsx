@@ -11,10 +11,9 @@ import './styles.css';
 
 interface Props {
 	plant: PlantType;
-	isFavorite: boolean;
 }
 
-export const PlantCard = memo(({ plant, isFavorite}: Props) =>
+export const PlantCard = memo(({ plant }: Props) =>
 	(
 		<div className='plant-card' data-testid='plant-card'>
 			<NavLink to={RouteName.PlANT_PAGE + '/' + plant.id}>
@@ -30,7 +29,7 @@ export const PlantCard = memo(({ plant, isFavorite}: Props) =>
 							<div key={el}>{el}</div>
 						)}
 					</div>
-					<HeartButton id={plant.id} isFavorite={isFavorite} />
+					<HeartButton id={plant.id} />
 				</div>
 			</div>
 		</div>

@@ -8,7 +8,6 @@ import { Navigation } from './navigation';
 
 import './styles.css';
 
-
 export function Header() {
 	return (
 		<header className='header' data-testid='header'>

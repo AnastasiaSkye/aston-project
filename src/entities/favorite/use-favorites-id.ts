@@ -6,17 +6,21 @@ import { AuthStatus } from 'shared/config';
 
 import { favorite } from './favorite';
 
-export const useFavorites = () => {
+interface useFavoritesIdResult {
+	favoritesId: number[];
+	isFavoritesIdLoading: boolean;
+}
+
+export const useFavoritesId = (): useFavoritesIdResult => {
 	const { authStatus } = useAuth();
 	const { favoritesId, setFavoritesId } = useContext(FavoritesContext);
 	const [isFavoritesIdLoading, setIsFavoritesIdLoading] = useState<boolean>(true);
 
 	const readFavorites = useCallback(async (): Promise<void> => {
 		setIsFavoritesIdLoading(true);
-		const favoritesData = await favorite.readFavorites();
-		setFavoritesId(favoritesData);
+		setFavoritesId(await favorite.readFavorites());
 		setIsFavoritesIdLoading(false);
-	}, []);
+	}, [setFavoritesId]);
 
 	useEffect(() => {
 		if (authStatus === AuthStatus.SignedIn) {
@@ -25,10 +29,10 @@ export const useFavorites = () => {
 			setFavoritesId([]);
 			setIsFavoritesIdLoading(false);
 		}
-	}, [authStatus, readFavorites]);
+	}, [authStatus, readFavorites, setFavoritesId]);
 
 	return {
 		favoritesId,
 		isFavoritesIdLoading
-	}
+	};
 };
