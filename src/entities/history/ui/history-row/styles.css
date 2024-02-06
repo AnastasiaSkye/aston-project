@@ -1,0 +1,20 @@
+.history-row {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.history-row:hover {
+    background: var(--light-1);
+}
+
+.dark .history-row:hover {
+    background: var(--dark-1);
+}
+
+.history-row button {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}

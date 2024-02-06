@@ -9,3 +9,4 @@ export type {
 } from './plants';
 export { Theme } from './theme';
 export { toastOptionsLight, toastOptionsDark } from './toast';
+export type { SearchItem, SearchHistory } from './history';

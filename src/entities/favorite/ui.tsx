@@ -12,8 +12,8 @@ export const FavoriteCard = memo(({ favoriteId }: Props) => {
 	return (
 		<>
 			{!isLoading && favoritePlant &&
-				<PlantCard plant={favoritePlant} isFavorite={true} />
+				<PlantCard plant={favoritePlant} />
 			}
 		</>
-	)
+	);
 });

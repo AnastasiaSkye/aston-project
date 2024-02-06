@@ -2,10 +2,21 @@ import { useCallback } from 'react';
 
 import { firebaseApi } from 'shared/api';
 import { AppError, useAppDispatch, useAppSelector } from 'shared/lib';
+import { AuthStatus, User } from 'shared/config';
 
 import { slice } from './slice';
 
-export const useAuth = () => {
+
+interface useAuthResult {
+	user: User;
+	authStatus: AuthStatus;
+	signUp: (email: string, password: string) => Promise<void>;
+	signIn: (email: string, password: string) => Promise<void>;
+	signOut: () => Promise<void>;
+	authChecked: () => Promise<void>;
+}
+
+export const useAuth = (): useAuthResult => {
 	const dispatch = useAppDispatch();
 	const { user, authStatus } = useAppSelector(state => state.user);
 

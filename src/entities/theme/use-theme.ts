@@ -4,7 +4,12 @@ import { ThemeContext } from 'app/contexts';
 import { Theme } from 'shared/config';
 import { addThemeToHTML, removeThemeToHTML, saveCurrentTheme } from 'shared/lib';
 
-export function useTheme() {
+interface useThemeResult {
+	theme: Theme;
+	changeTheme: () => void;
+}
+
+export function useTheme(): useThemeResult {
 	const { theme, setTheme } = useContext(ThemeContext);
 
 	const changeTheme = (): void => {

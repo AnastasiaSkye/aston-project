@@ -8,10 +8,9 @@ import './styles.css';
 
 interface Props {
 	plant: PlantDetailsType;
-	favoritesId: number[];
 }
 
-export function PlantDetails({ plant, favoritesId }: Props) {
+export function PlantDetails({ plant }: Props) {
 	return (
 		<div className='plant' data-testid='plant-details'>
 			<PlantImage src={plant.image} alt={plant.name} />
@@ -22,7 +21,7 @@ export function PlantDetails({ plant, favoritesId }: Props) {
 					{getPlantInfo(plant).map((el: string) =>
 						<div key={el}>{el}</div>
 					)}
-					<HeartButton id={plant.id} isFavorite={favoritesId.includes(plant.id)} />
+					<HeartButton id={plant.id} />
 				</div>
 			</div>
 		</div>
