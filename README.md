@@ -5,6 +5,7 @@
 
 - Проект представляет собой галерею растений
 - Использованное API: [Plant API](https://perenual.com/docs/api)
+- [Посмотреть проект](https://anastasiaskye.github.io/)
 
 ---
 
