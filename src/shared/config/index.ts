@@ -1,5 +1,6 @@
 export { RouteName } from './routes';
 export type { RouteDescription } from './routes';
+export { authNavigation, publicNavigation } from './navigation';
 export { FirebaseConfig } from './firebase';
 export { AuthStatus } from './user';
 export type { User } from './user';

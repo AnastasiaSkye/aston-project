@@ -1,4 +1,4 @@
-import { RouteName } from 'shared/config';
+import { RouteName } from './routes';
 
 export const authNavigation = [
 	{

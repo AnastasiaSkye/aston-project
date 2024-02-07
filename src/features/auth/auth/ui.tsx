@@ -2,8 +2,10 @@ import React, { FormEvent, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from 'entities/user';
-import { emailRegular, RouteName } from 'shared/config';
+import { RouteName } from 'shared/config';
 import { Button, Form, Input } from 'shared/ui';
+
+import { isValidEmail, isValidPassword } from './lib';
 
 interface Props {
 	isLogin: boolean;
@@ -21,29 +23,21 @@ export function AuthForm({ isLogin }: Props) {
 	const navigate = useNavigate();
 	const user = useAuth();
 
-	const emailValid = useCallback((): boolean =>
-			!!email.toLowerCase().match(emailRegular)
-		, [email]);
-
-	const passwordValid = useCallback((): boolean =>
-			password.length >= 8
-		, [password]);
-
 	const handleErrorEmail = useCallback((): void => {
-		if (emailValid()) {
+		if (isValidEmail(email)) {
 			setEmailError('');
 		} else {
 			setEmailError('Please enter a valid e-mail');
 		}
-	}, [emailValid]);
+	}, [email]);
 
 	const handleErrorPassword = useCallback((): void => {
-		if (passwordValid()) {
+		if (isValidPassword(password)) {
 			setPasswordError('');
 		} else {
 			setPasswordError('Passwords must have 8 characters or more');
 		}
-	}, [passwordValid]);
+	}, [password]);
 
 
 	const handleChangeEmail = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -61,14 +55,14 @@ export function AuthForm({ isLogin }: Props) {
 			e.preventDefault();
 			handleErrorEmail();
 			handleErrorPassword();
-			if (emailValid() && passwordValid()) {
+			if (isValidEmail(email) && isValidPassword(password)) {
 				setIsLoading(true);
 				if (isLogin) {
 					await user.signIn(email, password);
 					navigate(RouteName.MAIN_PAGE);
 				} else {
 					await user.signUp(email, password);
-					navigate(RouteName.LOGIN_PAGE);
+					navigate(RouteName.MAIN_PAGE);
 				}
 			}
 		} catch (error) {
@@ -79,7 +73,7 @@ export function AuthForm({ isLogin }: Props) {
 				setFormError('unknown_error');
 			}
 		}
-	}, [user, email, password, emailValid, passwordValid, isLogin, handleErrorEmail, handleErrorPassword, navigate]);
+	}, [user, email, password, isLogin, handleErrorEmail, handleErrorPassword, navigate]);
 
 	return (
 		<Form onSubmit={handleSubmit} className='auth-form' error={formError} data-testid='auth-form'>

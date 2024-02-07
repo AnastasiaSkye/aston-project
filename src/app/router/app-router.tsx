@@ -12,8 +12,8 @@ const Login = lazy(() => import('pages/login'));
 const Search = lazy(() => import('pages/search'));
 const Plant = lazy(() => import('pages/plant'));
 const NotFound = lazy(() => import('pages/not-found'));
-const Favorites = lazy(() => import('../../pages/favorites'));
-const History = lazy(() => import('../../pages/history'));
+const Favorites = lazy(() => import('pages/favorites'));
+const History = lazy(() => import('pages/history'));
 
 const {
 	MAIN_PAGE,

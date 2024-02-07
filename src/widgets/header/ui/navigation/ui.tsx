@@ -1,9 +1,7 @@
 import { Logout } from 'features/auth';
 import { useAuth } from 'entities/user';
-import { AuthStatus } from 'shared/config';
+import { AuthStatus, authNavigation, publicNavigation } from 'shared/config';
 import { Link } from 'shared/ui';
-
-import { authNavigation, publicNavigation } from './config';
 
 import './styles.css';
 
