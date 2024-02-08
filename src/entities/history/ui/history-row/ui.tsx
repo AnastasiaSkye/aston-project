@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdOutlineClose } from 'react-icons/md';
 
-import { history } from 'entities/history';
+import { useSearchedHistory } from 'entities/history';
 import { RouteName, SearchHistory } from 'shared/config';
 
 import './styles.css';
@@ -15,11 +15,7 @@ interface Props {
 }
 
 export function HistoryRow({ id, query, data, setSearchHistory }: Props) {
-
-	const historyRemoveStarted = async (): Promise<void> => {
-		await history.removeSearchedHistory(id);
-		setSearchHistory(history => history.filter(h => h.id !== id));
-	};
+	const { historyRemoveStarted } = useSearchedHistory(id, setSearchHistory)
 
 	return (
 		<div className='history-row'>
