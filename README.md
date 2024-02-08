@@ -66,6 +66,8 @@
 
 ---
 
-### Диаграмма
+### Диаграммы
 
-![Alt text](assets/plants.png)
+![Alt text](assets/plant.png)
+
+![Alt text](assets/header.png)

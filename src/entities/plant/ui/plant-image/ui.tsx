@@ -1,7 +1,8 @@
+import { memo } from 'react';
+
 import { Image } from 'shared/ui';
 
 import './styles.css';
-import { memo } from 'react';
 
 interface Props {
 	src: string;
