@@ -6,3 +6,4 @@ export { useDebounce } from './use-debounce';
 export { AppError } from './app-error';
 export { getCurrentTheme, saveCurrentTheme, addThemeToHTML, removeThemeToHTML } from './theme';
 export { formatDate } from './format-date';
+export { getUser, getAuthStatus } from './user';

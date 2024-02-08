@@ -16,7 +16,7 @@ interface Props {
 
 export function HistoryRow({ id, query, data, setSearchHistory }: Props) {
 
-	const deleteHistoryRow = async (): Promise<void> => {
+	const historyRemoveStarted = async (): Promise<void> => {
 		await history.removeSearchedHistory(id);
 		setSearchHistory(history => history.filter(h => h.id !== id));
 	};
@@ -24,7 +24,7 @@ export function HistoryRow({ id, query, data, setSearchHistory }: Props) {
 	return (
 		<div className='history-row'>
 			<div>
-				<button onClick={deleteHistoryRow}>
+				<button onClick={historyRemoveStarted}>
 					<MdOutlineClose size={25} />
 				</button>
 			</div>

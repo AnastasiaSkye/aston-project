@@ -1,11 +1,10 @@
 import { useCallback } from 'react';
 
 import { firebaseApi } from 'shared/api';
-import { AppError, useAppDispatch, useAppSelector } from 'shared/lib';
+import { AppError, getAuthStatus, getUser, useAppDispatch, useAppSelector } from 'shared/lib';
 import { AuthStatus, User } from 'shared/config';
 
 import { slice } from './slice';
-
 
 interface useAuthResult {
 	user: User;
@@ -18,7 +17,8 @@ interface useAuthResult {
 
 export const useAuth = (): useAuthResult => {
 	const dispatch = useAppDispatch();
-	const { user, authStatus } = useAppSelector(state => state.user);
+	const user = useAppSelector(getUser);
+	const authStatus = useAppSelector(getAuthStatus);
 
 	const signUp = useCallback(async (email: string, password: string): Promise<void> => {
 		try {
